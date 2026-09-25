@@ -95,14 +95,30 @@ export async function askPetNutritionist(
   // 2. IF GEMINI API KEY IS CONFIGURED, CALL GEMINI LLM
   if (aiClient) {
     try {
-      const response = await aiClient.models.generateContent({
-        model: 'gemini-2.5-flash',
-        contents: [
-          { role: 'user', parts: [{ text: PET_VET_SYSTEM_INSTRUCTION }] },
-          ...chatHistory.map((m) => ({ role: m.role, parts: [{ text: m.parts }] })),
-          { role: 'user', parts: [{ text: userMessage }] }
-        ]
-      });
+      const CANDIDATE_MODELS = [
+        'gemini-3.5-flash',
+        'gemini-3.5-flash-lite',
+        'gemini-3.8-flash',
+        'gemini-3.7-flash',
+        'gemini-flash-latest'
+      ];
+
+      let response: any = null;
+      for (const model of CANDIDATE_MODELS) {
+        try {
+          response = await aiClient.models.generateContent({
+            model,
+            contents: [
+              { role: 'user', parts: [{ text: PET_VET_SYSTEM_INSTRUCTION }] },
+              ...chatHistory.map((m) => ({ role: m.role, parts: [{ text: m.parts }] })),
+              { role: 'user', parts: [{ text: userMessage }] }
+            ]
+          });
+          if (response && response.text) break;
+        } catch (mErr) {
+          console.warn(`[PetVetAI] Model ${model} failed, trying next...`);
+        }
+      }
 
       if (response.text) {
         // Collect product suggestions based on content

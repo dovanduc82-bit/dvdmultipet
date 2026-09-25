@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useState, useMemo, Suspense } from 'react';
+import React, { useState, useEffect, useMemo, Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { mockProducts } from '@/lib/data/products';
 import { useCart } from '@/context/CartContext';
+import { Product } from '@/lib/types';
 import { Filter, Star, ShoppingBag, CheckCircle, Search, Sparkles, PackageOpen } from 'lucide-react';
 
 const CATEGORY_TABS = [
@@ -29,6 +30,7 @@ function ProductCatalogContent() {
   const initialCategory = searchParams.get('category') || 'all';
   const initialSection = searchParams.get('section') || 'all';
 
+  const [allProducts, setAllProducts] = useState<Product[]>(mockProducts);
   const [petFilter, setPetFilter] = useState<string>(initialPet);
   const [categoryFilter, setCategoryFilter] = useState<string>(initialCategory);
   const [sectionFilter, setSectionFilter] = useState<string>(
@@ -40,6 +42,17 @@ function ProductCatalogContent() {
 
   const { addToCart } = useCart();
 
+  useEffect(() => {
+    fetch('/api/admin/products')
+      .then((r) => r.json())
+      .then((d) => {
+        if (d.success && Array.isArray(d.products) && d.products.length > 0) {
+          setAllProducts(d.products);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   const handleAddToCart = (product: any) => {
     addToCart(product, 1);
     setAddedId(product.id);
@@ -47,7 +60,7 @@ function ProductCatalogContent() {
   };
 
   const filteredProducts = useMemo(() => {
-    return mockProducts.filter((product) => {
+    return allProducts.filter((product) => {
       // Pet filter
       if (petFilter !== 'all' && product.petType !== petFilter && product.petType !== 'all') {
         return false;

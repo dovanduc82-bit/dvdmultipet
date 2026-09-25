@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
-import { mockProducts } from '@/lib/data/products';
+import { mockProducts, getProductBySlug } from '@/lib/data/products';
 import { mockArticles } from '@/lib/data/articles';
 import { useCart } from '@/context/CartContext';
+import { Product } from '@/lib/types';
 import {
   Star,
   ShoppingBag,
@@ -22,14 +23,55 @@ import {
   Layers
 } from 'lucide-react';
 
+function findProductInList(list: Product[], query: string): Product | undefined {
+  if (!query) return undefined;
+  const q = decodeURIComponent(query).toLowerCase().trim();
+  return (
+    list.find((p) => p.slug === query || p.slug.toLowerCase() === q) ||
+    list.find((p) => p.id === query || p.id.toLowerCase() === q) ||
+    list.find((p) => p.id && q.includes(p.id.toLowerCase())) ||
+    list.find((p) => p.slug && q.includes(p.slug.toLowerCase())) ||
+    list.find((p) => p.slug && p.slug.toLowerCase().includes(q))
+  );
+}
+
 export default function ProductDetailPage() {
   const params = useParams();
-  const slug = params.id as string;
-  const product = mockProducts.find((p) => p.slug === slug || p.id === slug);
+  const slug = (params?.id as string) || '';
+  const [product, setProduct] = useState<Product | null>(() => {
+    return getProductBySlug(slug) || null;
+  });
+  const [isLoading, setIsLoading] = useState(!product);
+
+  useEffect(() => {
+    // If already found in static products, no need to wait
+    if (product) {
+      setIsLoading(false);
+    }
+    fetch('/api/admin/products')
+      .then((r) => r.json())
+      .then((d) => {
+        if (d.success && Array.isArray(d.products)) {
+          const found = findProductInList(d.products, slug);
+          if (found) setProduct(found);
+        }
+      })
+      .catch(() => {})
+      .finally(() => setIsLoading(false));
+  }, [slug]);
 
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
+
+  if (isLoading) {
+    return (
+      <div className="max-w-4xl mx-auto px-4 py-20 text-center space-y-4">
+        <div className="inline-block w-8 h-8 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+        <p className="text-sm text-slate-500">Đang tải thông tin sản phẩm...</p>
+      </div>
+    );
+  }
 
   if (!product) {
     return (

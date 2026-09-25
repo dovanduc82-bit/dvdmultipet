@@ -403,15 +403,146 @@ export const mockProducts: Product[] = [
       'Dải phản quang 3M siêu sáng bảo vệ thú cưng an toàn tuyệt đối khi đi dạo buổi tối'
     ],
     usageGuide: 'Điều chỉnh 4 khóa dây để cách ngực cún vừa vặn 2 ngón tay.'
+  },
+  // --- NHÓM 4: DƯỢC THÚ Y & ĐẶC TRỊ CHÍNH HÃNG FIVEVET ---
+  {
+    id: 'prod-477745',
+    sku: 'FIVE-AXO-68MG',
+    name: 'Viên nhai diệt ve rận Five Axolaner 68mg (Cho chó từ 10-25kg)',
+    slug: 'vien-nhai-diet-ve-ran-five-axolaner-68mg-cho-cho-tu-10-25kg-prod-477745',
+    petType: 'dog',
+    category: 'grooming_health',
+    lifeStage: 'all',
+    price: 100000,
+    originalPrice: 120000,
+    weight: '1 viên nhai',
+    rating: 5.0,
+    reviewCount: 48,
+    inStock: true,
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&auto=format&fit=crop&q=80',
+    shortDesc: 'Viên nhai vị thịt thơm ngon điều trị và phòng ngừa nhiễm ve, bọ chét, ghẻ Demodex, ghẻ Sarcoptes trong 24h, bảo vệ liên tục 30 ngày cho chó từ 10-25kg.',
+    benefits: [
+      'Tiêu diệt 100% ve rận và bọ chét ký sinh chỉ sau một lần nhai',
+      'Đặc trị ghẻ Demodex, Sarcoptes và viêm tai do ve rận ký sinh',
+      'Viên nén hương thịt bò thơm ngon, chó tự ăn hào hứng như bánh thưởng',
+      'Bảo vệ liên tục suốt 30 ngày, an toàn cho chó từ 8 tuần tuổi'
+    ],
+    usageGuide: 'Cho chó nhai trực tiếp hoặc trộn vào thức ăn. Liều lượng 1 viên duy nhất cho chó từ 10 - 25kg.'
+  },
+  {
+    id: 'prod-477744',
+    sku: 'FIVE-AXO-28.3MG',
+    name: 'Viên nhai diệt ve rận Five Axolaner 28,3mg (Cho chó từ 4-10kg)',
+    slug: 'vien-nhai-diet-ve-ran-five-axolaner-28-3mg-cho-cho-tu-4-10kg-prod-477744',
+    petType: 'dog',
+    category: 'grooming_health',
+    lifeStage: 'all',
+    price: 100000,
+    originalPrice: 120000,
+    weight: '1 viên nhai',
+    rating: 5.0,
+    reviewCount: 36,
+    inStock: true,
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600&auto=format&fit=crop&q=80',
+    shortDesc: 'Viên nhai vị thịt diệt ve rận, bọ chét, ghẻ Demodex, ghẻ Sarcoptes chuyên biệt cho chó nhỏ từ 4-10kg.',
+    benefits: [
+      'Tiêu diệt ve rận nhanh chóng trong 8-12 tiếng',
+      'Đặc trị ghẻ Demodex và Sarcoptes gây rụng lông, ngứa rát',
+      'Dễ ăn, hấp thu nhanh, hiệu quả kéo dài 30 ngày'
+    ],
+    usageGuide: 'Cho chó nhai trực tiếp hoặc trộn vào thức ăn. Liều lượng 1 viên cho chó từ 4 - 10kg.'
+  },
+  {
+    id: 'prod-477743',
+    sku: 'FIVE-AXO-11.3MG',
+    name: 'Viên nhai diệt ve rận Five Axolaner 11,3mg (Cho chó từ 2-4kg)',
+    slug: 'vien-nhai-diet-ve-ran-five-axolaner-11-3mg-cho-cho-tu-2-4kg-prod-477743',
+    petType: 'dog',
+    category: 'grooming_health',
+    lifeStage: 'all',
+    price: 100000,
+    originalPrice: 120000,
+    weight: '1 viên nhai',
+    rating: 5.0,
+    reviewCount: 52,
+    inStock: true,
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=600&auto=format&fit=crop&q=80',
+    shortDesc: 'Viên nhai vị thịt cho dòng chó mi ni, cún nhỏ từ 2-4kg giúp tiêu diệt tận gốc ve rận và bọ chét.',
+    benefits: [
+      'Kích thước nhỏ gọn, vị thịt thơm ngon cún nhỏ ăn dễ dàng',
+      'Loại bỏ sạch ve rận, bọ chét, chống tái nhiễm suốt 1 tháng',
+      'An toàn tuyệt đối cho cún nhỏ từ 8 tuần tuổi'
+    ],
+    usageGuide: 'Cho cún ăn trực tiếp hoặc tán nhỏ trộn cháo/pate. Liều 1 viên cho cún từ 2 - 4kg.'
+  },
+  {
+    id: 'prod-519397',
+    sku: 'FIVE-BUTOMEC-20ML',
+    name: 'Thuốc Trị Ve, Bọ Chét, Bọ Mạt Five Butomec',
+    slug: 'thuoc-tri-ve-bo-chet-bo-mat-five-butomec-prod-519397',
+    petType: 'all',
+    category: 'grooming_health',
+    lifeStage: 'all',
+    price: 200000,
+    originalPrice: 240000,
+    weight: 'Chai 20ml',
+    rating: 4.9,
+    reviewCount: 29,
+    inStock: true,
+    featured: false,
+    image: 'https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=600&auto=format&fit=crop&q=80',
+    shortDesc: 'Dung dịch nhỏ gáy và phun xịt phòng ngừa, tiêu diệt ve, chấy rận, bọ chét, mạt cho chó, mèo, gà đá và chim cảnh.',
+    benefits: [
+      'Phổ tác động rộng, diệt nhanh ve rận và bọ chét bám trên da lông',
+      'Hiệu quả cao, an toàn cho cả chó mèo và gia cầm cảnh',
+      'Dễ sử dụng, tác dụng kéo dài chống tái nhiễm'
+    ],
+    usageGuide: 'Nhỏ dọc sống lưng hoặc pha loãng phun xịt chuồng trại, khu vực nằm của thú cưng theo hướng dẫn.'
+  },
+  {
+    id: 'prod-395928',
+    sku: 'FIVE-ALBEN-30VIEN',
+    name: 'Thuốc tẩy giun cho chó mèo Five Alben',
+    slug: 'thuoc-tay-giun-cho-cho-meo-five-alben-prod-395928',
+    petType: 'all',
+    category: 'grooming_health',
+    lifeStage: 'all',
+    price: 100000,
+    originalPrice: 130000,
+    weight: 'Hộp 3 vỉ x 10 viên',
+    rating: 5.0,
+    reviewCount: 42,
+    inStock: true,
+    featured: false,
+    image: 'https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=600&auto=format&fit=crop&q=80',
+    shortDesc: 'Tẩy sạch các loại sán lá, sán dây, giun đũa, giun phổi, giun móc ở chó mèo. Có hương dâu thơm ngậy dễ uống.',
+    benefits: [
+      'Tẩy sạch phổ rộng các loại giun đũa, giun móc, sán dây ký sinh',
+      'Hương dâu thơm tự nhiên, bé không bị nhả thuốc hay sùi bọt mép',
+      'Quy cách hộp 3 vỉ 30 viên tiết kiệm, dùng được cho cả đàn thú cưng'
+    ],
+    usageGuide: 'Cho uống trực tiếp hoặc nghiền trộn vào thức ăn. Liều lượng theo bảng cân nặng in trên bao bì.'
   }
 ];
 
 export function getProductById(id: string): Product | undefined {
-  return mockProducts.find((p) => p.id === id);
+  if (!id) return undefined;
+  return mockProducts.find((p) => p.id.toLowerCase() === id.toLowerCase());
 }
 
 export function getProductBySlug(slug: string): Product | undefined {
-  return mockProducts.find((p) => p.slug === slug);
+  if (!slug) return undefined;
+  const decoded = decodeURIComponent(slug).toLowerCase().trim();
+  return (
+    mockProducts.find((p) => p.slug === slug || p.slug.toLowerCase() === decoded) ||
+    mockProducts.find((p) => p.id === slug || p.id.toLowerCase() === decoded) ||
+    mockProducts.find((p) => p.id && decoded.includes(p.id.toLowerCase())) ||
+    mockProducts.find((p) => p.slug && decoded.includes(p.slug.toLowerCase())) ||
+    mockProducts.find((p) => p.slug && p.slug.toLowerCase().includes(decoded))
+  );
 }
 
 export function getProductsByIds(ids: string[]): Product[] {

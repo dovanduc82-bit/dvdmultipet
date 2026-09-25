@@ -102,9 +102,12 @@ export default function Footer() {
               <div className="p-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 font-semibold">COD</div>
               <div className="p-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 font-semibold">Auto-Ship</div>
             </div>
-            <p className="text-[11px] text-slate-500 mt-4 leading-relaxed">
-              Mã nguồn dự án xây dựng trên nền tảng Next.js 15 & Gemini AI Engine.
-            </p>
+            <div className="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-[11px]">
+              <span className="text-slate-500">Next.js & Gemini AI</span>
+              <Link href="/admin" className="text-slate-400 hover:text-orange-400 flex items-center gap-1 font-semibold transition-colors">
+                <span>🔑 Quản Trị Shop</span>
+              </Link>
+            </div>
           </div>
         </div>
 

@@ -1,0 +1,799 @@
+{
+  "products": [
+    {
+      "id": "prod-519397",
+      "sku": "SKU-9397",
+      "name": "Thuốc Trị Ve, Bọ Chét, Bọ Mạt Five Butomec",
+      "slug": "thuoc-tri-ve-bo-chet-bo-mat-five-butomec-prod-519397",
+      "petType": "all",
+      "category": "grooming_health",
+      "lifeStage": "all",
+      "price": 200000,
+      "weight": "20ml",
+      "rating": 5,
+      "reviewCount": 1,
+      "inStock": true,
+      "image": "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=600&auto=format&fit=crop&q=80",
+      "shortDesc": "Phòng và điều trị hiệu quả ve, chấy rận, bọ chét, mạt cho chó, mèo, gà đá và chim cảnh.",
+      "benefits": [
+        "Đảm bảo chính hãng 100%",
+        "An toàn cho thú cưng",
+        "Được kiểm định chất lượng"
+      ]
+    },
+    {
+      "id": "prod-477745",
+      "sku": "SKU-7745",
+      "name": "Viên nhai diệt ve rận Five Axolaner 68mg (Cho chó từ 10-25kg)",
+      "slug": "vien-nhai-diet-ve-ran-five-axolaner-68mg-cho-cho-tu-10-25kg-prod-477745",
+      "petType": "dog",
+      "category": "grooming_health",
+      "lifeStage": "all",
+      "price": 100000,
+      "weight": "1 viên",
+      "rating": 5,
+      "reviewCount": 1,
+      "inStock": true,
+      "image": "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=600&auto=format&fit=crop&q=80",
+      "shortDesc": "Dạng viên nhai vị thịt thơm ngon, điều trị và phòng ngừa nhiễm ve, bọ chét, ghẻ Demodex, ghẻ Sarcoptes, nhiễm trùng tai ở chó.",
+      "benefits": [
+        "Đảm bảo chính hãng 100%",
+        "An toàn cho thú cưng",
+        "Được kiểm định chất lượng"
+      ]
+    },
+    {
+      "id": "prod-477744",
+      "sku": "SKU-7744",
+      "name": "Viên nhai diệt ve rận Five Axolaner 28,3mg (Cho chó từ 4-10kg)",
+      "slug": "vien-nhai-diet-ve-ran-five-axolaner-28-3mg-cho-cho-tu-4-10kg-prod-477744",
+      "petType": "dog",
+      "category": "grooming_health",
+      "lifeStage": "all",
+      "price": 100000,
+      "weight": "1 viên",
+      "rating": 5,
+      "reviewCount": 1,
+      "inStock": true,
+      "image": "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=600&auto=format&fit=crop&q=80",
+      "shortDesc": "Dạng viên nhai vị thịt thơm ngon, điều trị và phòng ngừa nhiễm ve, bọ chét, ghẻ Demodex, ghẻ Sarcoptes, nhiễm trùng tai ở chó.",
+      "benefits": [
+        "Đảm bảo chính hãng 100%",
+        "An toàn cho thú cưng",
+        "Được kiểm định chất lượng"
+      ]
+    },
+    {
+      "id": "prod-477743",
+      "sku": "SKU-7743",
+      "name": "Viên nhai diệt ve rận Five Axolaner 11,3mg (Cho chó từ 2-4kg)",
+      "slug": "vien-nhai-diet-ve-ran-five-axolaner-11-3mg-cho-cho-tu-2-4kg-prod-477743",
+      "petType": "dog",
+      "category": "grooming_health",
+      "lifeStage": "all",
+      "price": 100000,
+      "weight": "1 viên",
+      "rating": 5,
+      "reviewCount": 1,
+      "inStock": true,
+      "image": "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=600&auto=format&fit=crop&q=80",
+      "shortDesc": "Dạng viên nhai vị thịt thơm ngon, điều trị và phòng ngừa nhiễm ve, bọ chét, ghẻ Demodex, ghẻ Sarcoptes, nhiễm trùng tai ở chó.",
+      "benefits": [
+        "Đảm bảo chính hãng 100%",
+        "An toàn cho thú cưng",
+        "Được kiểm định chất lượng"
+      ]
+    },
+    {
+      "id": "prod-395928",
+      "sku": "SKU-5928",
+      "name": "Thuốc tẩy giun cho chó mèo Five Alben",
+      "slug": "thuoc-tay-giun-cho-cho-meo-five-alben-prod-395928",
+      "petType": "all",
+      "category": "grooming_health",
+      "lifeStage": "all",
+      "price": 100000,
+      "weight": "Hộp 3 vỉ x 10 viên",
+      "rating": 5,
+      "reviewCount": 1,
+      "inStock": true,
+      "image": "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=600&auto=format&fit=crop&q=80",
+      "shortDesc": "Tẩy sạch các loại sán lá, sán hạt dưa, sán dây, giun đũa, giun phổi, giun móc, giun tóc, giun kim ở chó và mèo. Có hương dâu thơm dễ uống.",
+      "benefits": [
+        "Đảm bảo chính hãng 100%",
+        "An toàn cho thú cưng",
+        "Được kiểm định chất lượng"
+      ]
+    },
+    {
+      "id": "prod-01",
+      "sku": "RC-MBC-2KG",
+      "name": "Hạt Royal Canin Mother & Babycat (Mèo Mẹ & Mèo Con 1-4 Tháng)",
+      "slug": "royal-canin-mother-babycat-2kg",
+      "petType": "cat",
+      "category": "dry_kibble",
+      "lifeStage": "puppy_kitten",
+      "price": 385000,
+      "originalPrice": 420000,
+      "weight": "2kg",
+      "rating": 4.9,
+      "reviewCount": 142,
+      "inStock": true,
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=600&auto=format&fit=crop&q=80",
+      "shortDesc": "Dinh dưỡng chuyển tiếp hoàn hảo cho mèo con cai sữa và hỗ trợ đề kháng tự nhiên cho mèo mẹ mang thai.",
+      "ingredients": [
+        "Protein gia cầm sấy khô",
+        "Mỡ động vật",
+        "Gạo lứt",
+        "Men vi sinh củng cố tiêu hóa FOS & MOS",
+        "Dầu cá giàu Omega 3 & DHA",
+        "Chất chống oxy hóa tự nhiên"
+      ],
+      "nutritionAnalysis": {
+        "protein": "34.0%",
+        "fat": "25.0%",
+        "fiber": "1.9%",
+        "moisture": "5.5%",
+        "calorieDensity": "4422 kcal/kg"
+      },
+      "benefits": [
+        "Hạt siêu nhỏ, xốp dễ ngâm nước ấm thành cháo cho mèo con tập ăn dặm",
+        "DHA hỗ trợ phát triển não bộ và thị lực trong giai đoạn vàng",
+        "Tổ hợp chất chống oxy hóa đã được cấp bằng sáng chế giúp tăng miễn dịch"
+      ],
+      "usageGuide": "Cho ăn tự do hoặc chia 4-5 bữa nhỏ/ngày. Có thể ngâm mềm với sữa dinh dưỡng Bio-Milk hoặc nước ấm."
+    },
+    {
+      "id": "prod-02",
+      "sku": "RC-URI-1.5KG",
+      "name": "Hạt Trị Liệu Tiết Niệu Mèo Royal Canin Urinary S/O",
+      "slug": "royal-canin-urinary-so-1.5kg",
+      "petType": "cat",
+      "category": "dietary",
+      "lifeStage": "adult",
+      "price": 490000,
+      "originalPrice": 530000,
+      "weight": "1.5kg",
+      "rating": 4.9,
+      "reviewCount": 98,
+      "inStock": true,
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=600&auto=format&fit=crop&q=80",
+      "shortDesc": "Công thức thú y chuyên biệt làm tan sỏi Struvite và ngăn ngừa tái phát sỏi Canxi Oxalate bàng quang.",
+      "ingredients": [
+        "Gạo",
+        "Gluten lúa mì",
+        "Thịt gia cầm khử nước",
+        "Bột ngô",
+        "Khoáng chất kiểm soát RSS",
+        "Dầu đậu nành và tinh dầu cúc vạn thọ"
+      ],
+      "nutritionAnalysis": {
+        "protein": "34.5%",
+        "fat": "15.0%",
+        "fiber": "2.8%",
+        "moisture": "5.5%",
+        "calorieDensity": "3872 kcal/kg"
+      },
+      "benefits": [
+        "Chỉ số RSS thấp giúp giảm nồng độ ion tạo sỏi trong nước tiểu",
+        "Làm tan nhanh sỏi Struvite tinh thể chỉ sau 5-12 tuần điều trị",
+        "Pha loãng nước tiểu tự nhiên, kích thích mèo đi tiểu đều đặn"
+      ],
+      "usageGuide": "Sử dụng theo chỉ định của bác sĩ thú y. Không dùng cho mèo mang thai, đang cho con bú hoặc suy thận mãn tính."
+    },
+    {
+      "id": "prod-03",
+      "sku": "TOW-PUP-2KG",
+      "name": "Hạt Cho Cún Con Taste of the Wild Pacific Stream Puppy (Đạm Cá Hồi)",
+      "slug": "taste-of-the-wild-pacific-stream-puppy-2kg",
+      "petType": "dog",
+      "category": "dry_kibble",
+      "lifeStage": "puppy_kitten",
+      "price": 460000,
+      "originalPrice": 495000,
+      "weight": "2kg",
+      "rating": 4.8,
+      "reviewCount": 76,
+      "inStock": true,
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&auto=format&fit=crop&q=80",
+      "shortDesc": "Công thức Grain-Free (không ngũ cốc) từ cá hồi biển sâu, lý tưởng cho cún dễ bị dị ứng da và ngứa lông.",
+      "ingredients": [
+        "Cá hồi tươi hun khói",
+        "Bột cá biển",
+        "Khoai lang & khoai tây",
+        "Dầu hạt cải",
+        "Quả mọng việt quất & mâm xôi",
+        "Lợi khuẩn đường ruột K9 Strain Probiotics"
+      ],
+      "nutritionAnalysis": {
+        "protein": "27.0%",
+        "fat": "15.0%",
+        "fiber": "5.0%",
+        "moisture": "10.0%",
+        "calorieDensity": "3600 kcal/kg"
+      },
+      "benefits": [
+        "Không chứa ngô, lúa mì hay phụ gia nhân tạo — an toàn tuyệt đối cho hệ tiêu hóa non nớt",
+        "DHA tự nhiên từ dầu cá hồi giúp cún thông minh, tiếp thu nhanh các bài huấn luyện",
+        "Omega 3 & 6 làm mượt lông, giảm hẳn vệt ố đỏ khóe mắt ở Poodle, Pomeranian"
+      ],
+      "usageGuide": "Chia làm 3 bữa/ngày theo bảng khuyến nghị cân nặng. Luôn chuẩn bị sẵn nước sạch."
+    },
+    {
+      "id": "prod-04",
+      "sku": "MONGE-PATE-DOG",
+      "name": "Pate Monge Fresh Cho Chó Vị Thịt Gà & Vịt Tươi (Hộp 400g)",
+      "slug": "pate-monge-fresh-cho-thit-ga-vit-400g",
+      "petType": "dog",
+      "category": "wet_pate",
+      "lifeStage": "all",
+      "price": 55000,
+      "originalPrice": 65000,
+      "weight": "400g",
+      "rating": 5,
+      "reviewCount": 110,
+      "inStock": true,
+      "featured": false,
+      "image": "https://images.unsplash.com/photo-1535294435445-d7249524ef2e?w=600&auto=format&fit=crop&q=80",
+      "shortDesc": "Pate tươi mềm nhập khẩu nguyên hộp từ Ý với từng miếng thịt thật ninh chậm, kích thích cún biếng ăn.",
+      "ingredients": [
+        "Thịt tươi 80% (Gà 10%, Vịt 10%)",
+        "Khoáng chất thiết yếu",
+        "Vitamin A, D3, E",
+        "Nước cốt thịt tự nhiên ninh chậm"
+      ],
+      "nutritionAnalysis": {
+        "protein": "9.0%",
+        "fat": "7.0%",
+        "fiber": "0.5%",
+        "moisture": "82.0%"
+      },
+      "benefits": [
+        "Không chứa gluten, không phẩm màu, không chất bảo quản hóa học",
+        "Cung cấp lượng nước tự nhiên dồi dào, phòng ngừa sỏi thận hiệu quả",
+        "Có thể trộn cùng hạt khô để tăng độ thèm ăn cho cún kén ăn"
+      ],
+      "usageGuide": "Cho ăn trực tiếp ở nhiệt độ phòng. Sau khi mở nắp, bảo quản trong ngăn mát tủ lạnh tối đa 48 giờ."
+    },
+    {
+      "id": "prod-05",
+      "sku": "REFLEX-KIT-2KG",
+      "name": "Hạt Reflex Plus Cho Mèo Con Vị Gà (Reflex Plus Kitten 2kg)",
+      "slug": "reflex-plus-cho-meo-con-vi-ga-2kg",
+      "petType": "cat",
+      "category": "dry_kibble",
+      "lifeStage": "puppy_kitten",
+      "price": 240000,
+      "originalPrice": 270000,
+      "weight": "2kg",
+      "rating": 4.7,
+      "reviewCount": 65,
+      "inStock": true,
+      "featured": false,
+      "image": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&auto=format&fit=crop&q=80",
+      "shortDesc": "Dòng hạt cao cấp nhập khẩu Thổ Nhĩ Kỳ chứa men Xylo-oligosaccharides (XOS) bảo vệ đường ruột tối ưu.",
+      "ingredients": [
+        "Thịt gà thủy phân",
+        "Gạo, mỡ gà",
+        "Hạt lanh giàu Omega",
+        "Chiết xuất cây Yucca Schidigera (giảm mùi hôi phân)",
+        "Prebiotic XOS"
+      ],
+      "nutritionAnalysis": {
+        "protein": "36.0%",
+        "fat": "18.0%",
+        "fiber": "2.0%",
+        "moisture": "7.0%",
+        "calorieDensity": "4120 kcal/kg"
+      },
+      "benefits": [
+        "XOS hỗ trợ hệ vi sinh đường ruột khỏe mạnh, giảm tiêu chảy khi đổi thức ăn",
+        "Chiết xuất Yucca giúp khay cát vệ sinh giảm đến 60% mùi hôi",
+        "Hàm lượng đạm cao 36% giúp bé tăng cân chuẩn khung xương"
+      ],
+      "usageGuide": "Dành cho mèo con từ 2 đến 12 tháng tuổi."
+    },
+    {
+      "id": "prod-06",
+      "sku": "CIAO-TREAT-50P",
+      "name": "Bánh Thưởng Súp Thưởng Ciao Churu Cho Mèo (Túi 50 Tuýp Tiết Kiệm)",
+      "slug": "sup-thuong-ciao-churu-cho-meo-50-tuyp",
+      "petType": "cat",
+      "category": "treats",
+      "lifeStage": "all",
+      "price": 320000,
+      "originalPrice": 360000,
+      "weight": "700g (50 tuýp)",
+      "rating": 5,
+      "reviewCount": 230,
+      "inStock": true,
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=600&auto=format&fit=crop&q=80",
+      "shortDesc": "Món ăn vặt thơm ngon số 1 Nhật Bản, bí quyết gắn kết tình cảm với boss và cấp nước bù dịch.",
+      "ingredients": [
+        "Cá ngừ Maguro tươi",
+        "Thịt gà rút xương",
+        "Chiết xuất trà xanh chống oxy hóa và giảm mùi hôi miệng",
+        "Collagen & Vitamin E"
+      ],
+      "nutritionAnalysis": {
+        "protein": "7.0%",
+        "fat": "0.2%",
+        "fiber": "0.1%",
+        "moisture": "91.0%"
+      },
+      "benefits": [
+        "Mùi vị cực kỳ kích thích, bất kỳ bé mèo khó tính nào cũng yêu thích",
+        "Độ ẩm cao 91% giúp bổ sung nước cho các bé mèo lười uống nước",
+        "Rất tiện lợi khi cần tán thuốc trộn vào để cho mèo uống"
+      ],
+      "usageGuide": "Cho ăn 2-4 tuýp mỗi ngày như bữa phụ hoặc phần thưởng huấn luyện."
+    },
+    {
+      "id": "prod-acc-01",
+      "sku": "FOUNT-ION-2.5L",
+      "name": "Máy Lọc Nước Tuần Hoàn Khử Khoáng Thông Minh 2.5L Cho Chó Mèo",
+      "slug": "may-loc-nuoc-tuan-hoan-khu-khoang-2-5l",
+      "petType": "all",
+      "category": "feeding_tools",
+      "lifeStage": "all",
+      "price": 380000,
+      "originalPrice": 450000,
+      "weight": "0.9kg",
+      "rating": 4.9,
+      "reviewCount": 88,
+      "inStock": true,
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=600&auto=format&fit=crop&q=80",
+      "shortDesc": "Dòng nước chảy liên tục mô phỏng suối tự nhiên, lõi lọc 4 lớp than hoạt tính & hạt trao đổi ion chống sỏi thận tuyệt đối.",
+      "specifications": {
+        "material": "Nhựa ABS nguyên sinh chuẩn an toàn thực phẩm FDA & Inox 304",
+        "capacity": "Dung tích 2.5 Lít (Đủ cho mèo uống 7-10 ngày)",
+        "origin": "Công nghệ tuần hoàn siêu êm dưới 20dB"
+      },
+      "benefits": [
+        "Kích thích thú cưng uống nước gấp 3 lần bình nước tĩnh thông thường",
+        "Loại bỏ cặn canxi, kim loại nặng và lông rụng trôi nổi trong nước",
+        "Động cơ không chổi than tiết kiệm điện, chạy êm ru không gây ồn ban đêm"
+      ],
+      "usageGuide": "Thay lõi lọc định kỳ sau 30-45 ngày. Vệ sinh khay chứa nước mỗi tuần 1 lần."
+    },
+    {
+      "id": "prod-acc-02",
+      "sku": "BOWL-CERAMIC-WOOD",
+      "name": "Bát Ăn Đôi Gốm Sứ Chân Gỗ Sồi Công Thái Học Chống Gù & Trào Ngược",
+      "slug": "bat-an-doi-gom-su-chan-go-soi-chong-gu",
+      "petType": "all",
+      "category": "feeding_tools",
+      "lifeStage": "all",
+      "price": 260000,
+      "originalPrice": 320000,
+      "weight": "1.2kg",
+      "rating": 4.8,
+      "reviewCount": 54,
+      "inStock": true,
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1577741314755-048d8525d31e?w=600&auto=format&fit=crop&q=80",
+      "shortDesc": "Góc nghiêng 15 độ nâng cao đốt sống cổ, gốm sứ tráng men cao cấp không gây đen cằm mụn bọc ở mèo.",
+      "specifications": {
+        "material": "Gốm sứ tráng men nung 1280°C + Khung gỗ sồi chống ẩm",
+        "dimensions": "31cm x 15cm x 12cm",
+        "capacity": "2 bát x 400ml"
+      },
+      "benefits": [
+        "Góc nghiêng 15° bảo vệ cột sống cổ và giảm hẳn chứng trào ngược nôn hạt sau khi ăn",
+        "Chất liệu gốm kháng khuẩn dễ rửa sạch, phòng ngừa 100% tình trạng nổi mụn cằm đen ở mèo",
+        "Khung gỗ đầm chắc chống trơn trượt, thú cưng ăn không bị xô đẩy đổ thức ăn ra sàn"
+      ],
+      "usageGuide": "Có thể tháo rời từng bát để quay trong lò vi sóng hoặc rửa bằng máy rửa bát."
+    },
+    {
+      "id": "prod-acc-03",
+      "sku": "LITTER-TOFU-6L",
+      "name": "Cát Vệ Sinh Đậu Nành Tofu Hữu Cơ Khử Mùi 99% (Xả Bồn Cầu Tiện Lợi)",
+      "slug": "cat-ve-sinh-dau-nanh-tofu-khu-mui-6l",
+      "petType": "cat",
+      "category": "hygiene_litter",
+      "lifeStage": "all",
+      "price": 135000,
+      "originalPrice": 160000,
+      "weight": "2.5kg (6 Lít)",
+      "rating": 5,
+      "reviewCount": 195,
+      "inStock": true,
+      "featured": false,
+      "image": "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=600&auto=format&fit=crop&q=80",
+      "shortDesc": "Sản xuất 100% từ bã đậu nành thực phẩm, không bụi 99.9%, an toàn cho đường hô hấp của mèo và người nuôi.",
+      "specifications": {
+        "material": "Đậu nành hữu cơ & Tinh bột ngô tự nhiên",
+        "capacity": "Bao hút chân không 6 Lít",
+        "origin": "Hương trà xanh / Hương sữa thơm dịu"
+      },
+      "benefits": [
+        "Vón cục siêu nhanh trong 3 giây, khóa chặt mùi amoniac nước tiểu",
+        "Có thể đổ trực tiếp vào bồn cầu xả nước mà không lo tắc cống",
+        "Hạt ép tròn không bám kẽ chân mèo, không văng vãi bẩn sàn nhà"
+      ],
+      "usageGuide": "Đổ cát vào khay với độ dày khoảng 5-7cm. Xúc bỏ chất thải hàng ngày."
+    },
+    {
+      "id": "prod-acc-04",
+      "sku": "CAT-TREE-SISAL",
+      "name": "Nhà Cây Cat Tree 3 Tầng Kèm Trụ Cào Móng Dây Thừng Sisal Tự Nhiên",
+      "slug": "nha-cay-cat-tree-3-tang-tru-cao-mong",
+      "petType": "cat",
+      "category": "toys_scratchers",
+      "lifeStage": "all",
+      "price": 520000,
+      "originalPrice": 650000,
+      "weight": "4.5kg",
+      "rating": 4.8,
+      "reviewCount": 42,
+      "inStock": true,
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1545249390-6bdfa286032f?w=600&auto=format&fit=crop&q=80",
+      "shortDesc": "Khu vui chơi liên hoàn giúp mèo giải tỏa căng thẳng, mài móng tự nhiên và bảo vệ bộ ghế sofa đắt tiền của bạn.",
+      "specifications": {
+        "material": "Gỗ ván ép bọc nỉ lông cừu mềm mại + Dây thừng sợi gai Sisal tự nhiên",
+        "dimensions": "Cao 85cm x Đế 45cm x 45cm",
+        "origin": "Kết cấu vững chắc chịu tải cho mèo tới 8kg"
+      },
+      "benefits": [
+        "Thỏa mãn bản năng cào móng và leo trèo tầm cao của loài mèo",
+        "Trang bị bóng bông treo lắc lư kích thích phản xạ săn mồi và vận động tránh béo phì",
+        "Chất liệu dây đay sisal bền bỉ không bung sợi độc hại"
+      ],
+      "usageGuide": "Đặt ở góc phòng khách hoặc cạnh cửa sổ nơi mèo thích nằm sưởi nắng."
+    },
+    {
+      "id": "prod-acc-05",
+      "sku": "SHAMPOO-HERB-500ML",
+      "name": "Sữa Tắm Thảo Dược Trị Nấm & Viêm Da Khử Mùi Hôi Cho Chó Mèo 500ml",
+      "slug": "sua-tam-thao-duoc-tri-nam-viem-da-cho-meo",
+      "petType": "all",
+      "category": "grooming_health",
+      "lifeStage": "all",
+      "price": 185000,
+      "originalPrice": 220000,
+      "weight": "500ml",
+      "rating": 4.9,
+      "reviewCount": 78,
+      "inStock": true,
+      "featured": false,
+      "image": "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=600&auto=format&fit=crop&q=80",
+      "shortDesc": "Chiết xuất tràm trà, neem và dầu dừa dưỡng ẩm, diệt khuẩn kỵ khí và khử sạch mùi hôi hôi tuyến bã nhờn suốt 7 ngày.",
+      "specifications": {
+        "material": "Chiết xuất tinh dầu Tràm Trà Úc, Tinh dầu Neem & Vitamin E",
+        "capacity": "Chai vòi nhấn tiện dụng 500ml",
+        "origin": "Độ pH 6.5 trung tính tương thích da chó mèo"
+      },
+      "benefits": [
+        "Kháng nấm da Microsporum và giảm ngứa gãi tức thì sau 2 lần tắm",
+        "Làm mềm mượt lông, phục hồi nang lông bị xơ rối rụng trọc do gãi ngứa",
+        "Hương thảo mộc thiên nhiên lưu hương nhẹ nhàng, không gây cay mắt bé"
+      ],
+      "usageGuide": "Làm ướt lông, thoa đều dầu tắm massage trong 5-7 phút để dược chất thẩm thấu rồi xả sạch với nước."
+    },
+    {
+      "id": "prod-acc-06",
+      "sku": "HARNESS-REFLECT-LED",
+      "name": "Dây Dắt Yếm Chống Giật Siêu Êm Kèm Dải Phản Quang An Toàn Ban Đêm Cho Cún",
+      "slug": "day-dat-yem-chong-giat-phan-quang-cho-cun",
+      "petType": "dog",
+      "category": "accessories_collars",
+      "lifeStage": "all",
+      "price": 195000,
+      "originalPrice": 240000,
+      "weight": "300g",
+      "rating": 4.9,
+      "reviewCount": 63,
+      "inStock": true,
+      "featured": false,
+      "image": "https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=600&auto=format&fit=crop&q=80",
+      "shortDesc": "Thiết kế chữ Y phân bổ lực đều ngực không thắt nghẹt khí quản khi cún chồm giật, dải phản quang phát sáng khi có đèn pha.",
+      "specifications": {
+        "material": "Vải lưới Oxford thoáng khí 3 lớp + Khóa bấm kim loại hợp kim kẽm",
+        "dimensions": "Tùy chỉnh size vòng ngực từ 35cm đến 65cm (phù hợp cún 3kg - 18kg)"
+      },
+      "benefits": [
+        "Phân bổ lực kéo vào xương ức ngực, triệt tiêu nguy cơ tổn thương sụn thanh quản ở cún con",
+        "Lớp đệm xốp êm ái chống cọ xát rụng lông vùng nách",
+        "Dải phản quang 3M siêu sáng bảo vệ thú cưng an toàn tuyệt đối khi đi dạo buổi tối"
+      ],
+      "usageGuide": "Điều chỉnh 4 khóa dây để cách ngực cún vừa vặn 2 ngón tay."
+    }
+  ],
+  "articles": [
+    {
+      "id": "art-01",
+      "slug": "che-do-an-chuan-cho-meo-con-cai-sua-tu-1-den-4-thang",
+      "title": "Cẩm Nang Dinh Dưỡng: Hướng Dẫn Cho Mèo Con Tập Ăn Dặm Từ 1 Đến 4 Tháng Tuổi",
+      "summary": "Giai đoạn chuyển từ bú sữa mẹ sang ăn dặm là cột mốc quyết định hệ tiêu hóa và miễn dịch trọn đời của mèo con. Cùng bác sĩ dinh dưỡng khám phá thực đơn và đồ dùng chuẩn y khoa.",
+      "category": "Chăm sóc mèo con",
+      "targetPet": "cat",
+      "featuredImage": "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=800&auto=format&fit=crop&q=80",
+      "author": {
+        "name": "Bác sĩ Thú y Minh Trang",
+        "title": "Chuyên khoa Dinh dưỡng Thú y",
+        "avatar": "https://images.unsplash.com/photo-1594824813591-6893ddf4f2c0?w=150&auto=format&fit=crop&q=80"
+      },
+      "readTime": "5 phút đọc",
+      "publishedAt": "2026-09-10T08:00:00Z",
+      "status": "published",
+      "isAiGenerated": false,
+      "relatedProductIds": [
+        "prod-01",
+        "prod-acc-02",
+        "prod-acc-03"
+      ],
+      "tags": [
+        "Mèo con",
+        "Ăn dặm",
+        "Dinh dưỡng mèo",
+        "Bát ăn gốm sứ",
+        "Cát đậu nành Tofu"
+      ],
+      "content": "\n### 1. \"Khoảng trống miễn dịch\" ở mèo con là gì?\nTừ tuần tuổi thứ 4 đến tuần thứ 12, lượng kháng thể nhận được từ sữa mèo mẹ bắt đầu suy giảm nhanh chóng, trong khi hệ miễn dịch tự thân của mèo con chưa hoàn thiện. Đây được các bác sĩ thú y gọi là **\"Khoảng trống miễn dịch\" (Immunity Gap)**.\n\nTrong giai đoạn này, mèo con rất dễ bị tiêu chảy, sụt cân hoặc nhiễm khuẩn hô hấp nếu đổi thức ăn đột ngột.\n\n### 2. Chuẩn bị thức ăn và đồ dùng thiết yếu cho mèo con tập ăn\n* **Hạt thức ăn xốp mềm, giàu DHA**: Hạt siêu nhỏ dưới 6mm dễ ngâm nở thành cháo mịn giàu DHA như Royal Canin Mother & Babycat.\n* **Bát ăn gốm sứ chống trào ngược**: Răng và hàm mèo con còn yếu, bạn nên dùng bát gốm sứ có góc nghiêng công thái học 15 độ để bé không phải cúi gập cổ gây sặc trớ.\n* **Cát vệ sinh hữu cơ an toàn**: Mèo con thường có thói quen tò mò liếm hoặc cắn thử hạt cát, do đó bắt buộc phải dùng cát đậu nành hữu cơ 100% tự nhiên không độc tố.\n\n### 3. Lịch trình tập ăn dặm theo từng tuần\n1. **Tuần 4 - 5**: Ngâm hạt với nước ấm theo tỷ lệ 1 phần hạt : 3 phần nước. Trộn đều thành hỗn hợp lỏng như bột ăn dặm của em bé.\n2. **Tuần 6 - 7**: Giảm dần lượng nước, hạt để mềm ẩm nhưng bắt đầu có độ nhai nhẹ.\n3. **Tuần 8 trở đi**: Mèo con có thể ăn hạt khô hoàn toàn hoặc xen kẽ pate tươi để bổ sung nước.\n    "
+    },
+    {
+      "id": "art-02",
+      "slug": "dau-hieu-soi-tiet-nieu-o-meo-va-che-do-an-tri-lieu",
+      "title": "Dấu Hiệu Sỏi Bàng Quang Ở Mèo & Bộ Giải Pháp Dinh Dưỡng + Máy Lọc Nước Khử Khoáng",
+      "summary": "Mèo đi tiểu rặn, tiểu ra máu hoặc hay liếm bộ phận sinh dục là dấu hiệu cảnh báo bệnh lý sỏi đường tiết niệu (FLUTD). Khám phá giải pháp dinh dưỡng làm tan sỏi và cơ chế kích thích uống nước tự nhiên.",
+      "category": "Bệnh lý & Trị liệu",
+      "targetPet": "cat",
+      "featuredImage": "https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=800&auto=format&fit=crop&q=80",
+      "author": {
+        "name": "BS. Tuấn Anh",
+        "title": "Bác sĩ Điều trị Nội khoa",
+        "avatar": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=150&auto=format&fit=crop&q=80"
+      },
+      "readTime": "6 phút đọc",
+      "publishedAt": "2026-09-11T12:00:00Z",
+      "status": "published",
+      "isAiGenerated": false,
+      "relatedProductIds": [
+        "prod-02",
+        "prod-acc-01",
+        "prod-06"
+      ],
+      "tags": [
+        "Sỏi thận",
+        "Tiết niệu mèo",
+        "Thức ăn trị liệu",
+        "Máy lọc nước mèo",
+        "Urinary S/O"
+      ],
+      "content": "\n### 1. Vì sao mèo nhà bạn rất dễ bị sỏi thận và sỏi bàng quang?\nTổ tiên của loài mèo vốn sống ở sa mạc, do đó chúng có bản năng uống rất ít nước và nước tiểu thường rất cô đặc. Khi được nuôi trong nhà với chế độ ăn hạt khô thông thường thiếu nước, khoáng chất magie và photpho dễ kết tinh thành **sỏi Struvite** hoặc **Canxi Oxalate**.\n\n### 2. Các dấu hiệu cảnh báo khẩn cấp\n* Mèo ngồi khay cát rất lâu, kêu meo meo đau đớn khi đi tiểu.\n* Nước tiểu có màu hồng hoặc lẫn vệt máu đỏ.\n* Mèo đi tiểu nhiều lần trong ngày nhưng mỗi lần chỉ nhỏ vài giọt.\n* Mèo đực bị tắc tiểu hoàn toàn (đây là tình huống cấp cứu thú y đe dọa tính mạng trong 24-48h).\n\n### 3. Phác đồ điều trị kép: Thức ăn trị liệu + Máy lọc nước tuần hoàn\n1. **Dinh dưỡng hạ chỉ số bão hòa RSS**: Sử dụng hạt chuyên biệt **Royal Canin Urinary S/O** để hòa tan tinh thể sỏi Struvite.\n2. **Kích thích uống nước bằng Máy lọc nước tuần hoàn**: Mèo có bản năng sợ nước đọng trong bát tĩnh vì lo ngại nước bẩn. Dòng nước chảy tuần hoàn oxy hóa liên tục của máy lọc nước sẽ kích thích mèo uống nhiều gấp 3 lần, giúp pha loãng nước tiểu và đẩy sỏi ra ngoài tự nhiên!\n    "
+    },
+    {
+      "id": "art-03",
+      "slug": "giai-phap-tri-chay-nuoc-mat-ngua-da-cho-cun-poodle",
+      "title": "Bí Quyết Trị Dứt Điểm Chảy Nước Mắt Ố Vàng & Dị Ứng Da Ở Chó Poodle",
+      "summary": "Vệt ố nâu quanh khóe mắt và tình trạng gãi tai, liếm chân liên tục ở Poodle phần lớn bắt nguồn từ dị ứng đạm gia cầm trong hạt thức ăn kết hợp viêm da bề mặt.",
+      "category": "Chăm sóc chó",
+      "targetPet": "dog",
+      "featuredImage": "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&auto=format&fit=crop&q=80",
+      "author": {
+        "name": "Chuyên viên Grooming & Dinh dưỡng Mai Linh",
+        "title": "Pet Stylist & Nutrition Consultant",
+        "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80"
+      },
+      "readTime": "4 phút đọc",
+      "publishedAt": "2026-09-12T08:00:00Z",
+      "status": "published",
+      "isAiGenerated": true,
+      "relatedProductIds": [
+        "prod-03",
+        "prod-acc-05",
+        "prod-acc-06"
+      ],
+      "tags": [
+        "Chó Poodle",
+        "Chảy nước mắt",
+        "Dị ứng da",
+        "Sữa tắm thảo dược",
+        "Dây dắt yếm"
+      ],
+      "content": "\n### 1. Nguyên nhân sâu xa khiến Poodle bị vệt nâu quanh mắt\nTuyến lệ của Poodle rất hẹp và dễ bị kích ứng. Khi thức ăn chứa nhiều phẩm màu nhân tạo, chất bảo quản BHA/BHT hoặc chứa **nguồn đạm dễ gây dị ứng (như thịt gà công nghiệp, ngô, đậu nành)**, cơ thể cún sẽ tiết ra porphyrin qua nước mắt. Khi tiếp xúc với ánh sáng mặt trời, porphyrin sẽ bị oxy hóa thành màu nâu đỏ làm ố bẩn lông mặt.\n\n### 2. Sự kết hợp giữa Thức ăn Cá hồi Grain-Free và Vệ sinh Thảo dược\n* **Bên trong**: Chuyển sang hạt **Taste of the Wild Pacific Stream Puppy** (đạm cá hồi tươi hun khói, không ngũ cốc). Giàu Omega 3 & DHA giúp kháng viêm nang lông từ gốc.\n* **Bên ngoài**: Tắm định kỳ với **Sữa tắm thảo dược Tràm trà & Neem** để tiêu diệt vi khuẩn nấm ngứa kỵ khí trên bề mặt da.\n* **Khi vận động ngoài trời**: Dùng **Dây dắt yếm chữ Y chống giật** để không chèn ép khí quản và không cọ xát gây rụng lông vùng cổ nách của cún.\n    "
+    }
+  ],
+  "orders": [
+    {
+      "id": "PN-882194",
+      "customerName": "Nguyễn Thanh Hà",
+      "phone": "0912345678",
+      "address": "142 Hoàng Hoa Thám, Ba Đình, Hà Nội",
+      "note": "Giao giờ hành chính, gọi trước khi đến",
+      "paymentMethod": "vietqr",
+      "items": [
+        {
+          "id": "prod-01",
+          "name": "Hạt Royal Canin Mother & Babycat",
+          "price": 385000,
+          "quantity": 1,
+          "weight": "2kg",
+          "image": "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=600&auto=format&fit=crop&q=80"
+        },
+        {
+          "id": "prod-acc-01",
+          "name": "Máy Lọc Nước Tuần Hoàn Khử Khoáng 2.5L",
+          "price": 380000,
+          "quantity": 1,
+          "weight": "0.9kg",
+          "image": "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      "subtotal": 765000,
+      "shippingFee": 0,
+      "totalAmount": 765000,
+      "status": "cancelled",
+      "createdAt": "2026-09-14T14:28:50.474Z",
+      "updatedAt": "2026-09-15T00:04:25.455Z"
+    },
+    {
+      "id": "PN-621039",
+      "customerName": "Trần Minh Quân",
+      "phone": "0988776655",
+      "address": "78 Lê Duẩn, Quận 1, TP. Hồ Chí Minh",
+      "note": "Đóng gói kỹ giúp mình",
+      "paymentMethod": "cod",
+      "items": [
+        {
+          "id": "prod-03",
+          "name": "Hạt Taste of the Wild Pacific Stream Puppy",
+          "price": 460000,
+          "quantity": 1,
+          "weight": "2kg",
+          "image": "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      "subtotal": 460000,
+      "shippingFee": 30000,
+      "totalAmount": 490000,
+      "status": "shipping",
+      "createdAt": "2026-09-14T09:28:50.474Z"
+    }
+  ],
+  "socialPosts": [
+    {
+      "id": "sp-995929",
+      "platform": "tiktok",
+      "title": "Kịch bản TikTok Tẩy Giun Five Alben DVDmultilPET",
+      "content": "[00:00 - 00:05] Cảnh quay: Quay cận cảnh một bé mèo đang gầy gò, lông xơ xác, sen đang thở dài ôm đầu. Lời thoại Voiceover: \"Sen ơi! Nuôi boss tốn bao nhiêu tiền yến sào, hạt ngoại mà sao boss vẫn còi cọc, bụng ỏng eo và lông xơ xác thế này?\"\n[00:05 - 00:15] Cảnh quay: Cận cảnh hộp thuốc 'Five Alben' giá 100k, quay rõ viên thuốc và nhãn mác chính hãng 100%. Lời thoại Voiceover: \"Thủ phạm chính là giun sán đấy! Đừng lo, đã có bí kíp Five Alben nhà DVDmultilPET. Hộp 3 vỉ x 10 viên, tẩy sạch bách giun đũa, giun móc, sán dây từ A đến Z.\"\n[00:15 - 00:25] Cảnh quay: Quay cảnh cho mèo uống thuốc hoặc boss vui vẻ ăn hạt, chèn text 'Hương dâu thơm dễ uống'. Lời thoại Voiceover: \"Điểm cộng cực lớn là thuốc có hương dâu thơm lừng, siêu dễ uống, cực kỳ an toàn đã được kiểm định. Boss hợp tác ngay từ lần đầu tiên, tẩy giun xong là khỏe re, lớn nhanh như thổi, lông mượt mà bóng loáng.\"\n[00:25 - 00:30] Cảnh quay: Sen cười tươi ôm boss mịn màng, chỉ tay xuống góc màn hình. Lời thoại Voiceover: \"Chỉ 100 cành cho một bé cún miu khỏe mạnh. Nhanh tay bấm vào giỏ hàng ngay bên dưới hoặc ghé thucungtot.net để rinh liền một hộp nhé!\"",
+      "hookText": "Nuôi chó mèo mãi không lớn, lông xơ xác? Cẩn thận con vật này đang hút sạch máu thú cưng của bạn!",
+      "hashtags": [
+        "#thucungtot",
+        "#dvdmultipet",
+        "#taygiunchocomeo",
+        "#fivealben",
+        "#chomeokhoemanh"
+      ],
+      "targetUrl": "https://thucungtot.net/products/thuoc-tay-giun-cho-cho-meo-five-alben-prod-395928",
+      "status": "draft",
+      "createdAt": "2026-09-25T16:16:35.929Z",
+      "mediaUrls": []
+    },
+    {
+      "id": "sp-087221",
+      "platform": "tiktok",
+      "title": "Bí quyết trị ve rận và dưỡng lông mượt cho cún từ Bác sĩ thú y",
+      "content": "[00:00 - 00:05] Cảnh quay & Lời thoại Voiceover: Cận cảnh chú cún đang gãi ngứa điên cuồng, lông xơ xác. Text trên màn hình: 'Cún cưng đang kêu cứu vì thứ này!'. Lời thoại: 'Cún bị ve rận, ghẻ lở, lông xơ xác? Đừng tự ý bôi thuốc linh tinh! Hãy nghe bác sĩ thú y chỉ cách xử lý chuẩn nhất!'\n\n[00:05 - 00:15] Cảnh quay & Lời thoại Voiceover: Bác sĩ (hoặc bạn) cầm hộp sản phẩm Five Axolaner 68mg trên tay, quay cận cảnh viên nhai. Lời thoại: 'Bí quyết của tôi là viên nhai Five Axolaner 68mg chính hãng dành riêng cho chó từ 10-25kg. Em nó có vị thịt siêu ngon, cún ăn như snack mà diệt sạch ve, bọ chét, ghẻ Demodex, ghẻ Sarcoptes tận gốc!'\n\n[00:15 - 00:30] Cảnh quay & Lời thoại Voiceover: Cảnh cún vui vẻ ngoe nguẩy đuôi, bộ lông mượt mà, sạch sẽ. Lời thoại: 'Sản phẩm đã được kiểm định an toàn 100%, bảo vệ cún yêu suốt nhiều tuần. Chỉ 100 cành một viên thôi các sen ơi! Bấm ngay vào đường link trong phần mô tả để đặt mua Five Axolaner 68mg chính hãng tại DVDmultilPET nhé!'",
+      "hookText": "Cún cưng gãi ngứa rách da, lông xơ xác? Xem ngay cách xử lý chuẩn y khoa!",
+      "hashtags": [
+        "#fiveaxolaner",
+        "#tríverậnchó",
+        "#chămsóchúccưng",
+        "#thucungtot",
+        "#dvdmultipet"
+      ],
+      "targetUrl": "https://thucungtot.net/products/vien-nhai-diet-ve-ran-five-axolaner-68mg-cho-cho-tu-10-25kg-prod-477745",
+      "status": "draft",
+      "createdAt": "2026-09-25T16:01:27.221Z",
+      "mediaUrls": [
+        "/media/pet-clips/3.mp4"
+      ]
+    },
+    {
+      "id": "sp-315017",
+      "platform": "tiktok",
+      "title": "Bí Quyết Cún Sạch Ve Rận - Khỏe Đẹp Toàn Diện Với Five Axolaner 11.3mg",
+      "content": "[00:00 - 00:03]\n* Cảnh quay: Cận cảnh chú cún nhỏ (2-4kg) đang gãi tai liên tục với vẻ mặt khó chịu. Trên màn hình hiện chữ lớn: \"CÚN NGỨA NGÁY SUỐT NGÀY?\".\n* Diễn xuất: Diễn viên (chủ nuôi) ôm cún với nét mặt lo lắng.\n* Âm thanh: Tiếng gãi sột soạt phóng đại (SFX Scratching) kết hợp nhạc kịch tính giật gân.\n* Voiceover: \"Cún cưng cào cấu suốt ngày? Coi chừng bị ve rận ăn thịt!\"\n\n[00:04 - 00:08]\n* Cảnh quay: Chuyển cảnh zoom cận cảnh biểu cảm mệt mỏi của cún, xen kẽ icon minh họa ve rận và ghẻ tai ghê rợn.\n* Diễn xuất: Chủ nuôi xoa đầu cún đầy xót xa.\n* Âm thanh: Tiếng tim đập dồn dập (SFX Heartbeat).\n* Voiceover: \"Không chỉ ngứa, ve rận và ghẻ Demodex còn hút máu, tàn phá làn da, khiến lông rụng xơ xác! Chó khỏe thì mới đẹp được chứ!\"\n\n[00:09 - 00:15]\n* Cảnh quay: Chủ nuôi lấy ra 1 viên nhai Five Axolaner 11,3mg đặt lên tay. Cún cưng ngửi và lập tức ăn ngon lành.\n* Diễn xuất: Cún nhai háo hức, vẫy đuôi mừng rỡ vì viên có vị thịt thơm ngon.\n* Âm thanh: Tiếng \"Ding!\" lấp lánh phép thuật (SFX Magic Sparkle), nhạc chuyển sang tone vui vẻ, tươi sáng.\n* Voiceover: \"Bí quyết đây! Viên nhai Five Axolaner vị thịt cực ngon. Ăn một viên, diệt sạch ve rận, ghẻ tai, ghẻ Sarcoptes tận gốc!\"\n\n[00:16 - 00:22]\n* Cảnh quay: Chú cún chạy nhảy năng động, bộ lông mượt mà, được chủ bế lên thơm má. Hiện text cam kết: \"Chính Hãng 100% - Đã Kiểm Định - Tuyệt Đối An Toàn\".\n* Diễn xuất: Chủ và cún tương tác vui vẻ, hạnh phúc.\n* Âm thanh: Nhạc nền năng lượng, dễ thương.\n* Voiceover: \"Sạch bóng ký sinh trùng, cún khỏe mạnh, lông mượt chuẩn spa. Tha hồ ôm ấp không lo lây bệnh!\"\n\n[00:23 - 00:30]\n* Cảnh quay: Tay chỉ vào nút giỏ hàng màu vàng góc trái màn hình, sau đó là logo DVDmultilPET và Hotline 0819.210.319.\n* Diễn xuất: Diễn viên cười tươi hướng tay về phía giỏ hàng.\n* Âm thanh: Tiếng \"Click\" đặt hàng thành công.\n* Voiceover: \"Chỉ 100 cành cho cún từ 2-4kg. Bấm ngay vào đường link trong phần mô tả để đặt mua Five Axolaner chính hãng tại DVDmultilPET nha!\"",
+      "hookText": "Cún cào cấu suốt ngày? Coi chừng bị ve rận ăn thịt!",
+      "hashtags": [
+        "#dietveran",
+        "#fiveaxolaner",
+        "#chokhoechedep",
+        "#chamsoccho",
+        "#dvdmultipet",
+        "#thucungtot"
+      ],
+      "targetUrl": "https://thucungtot.net/products/vien-nhai-diet-ve-ran-five-axolaner-11-3mg-cho-cho-tu-2-4kg-prod-477743",
+      "status": "draft",
+      "createdAt": "2026-09-20T18:35:15.017Z",
+      "mediaUrls": [
+        "/uploads/videos/video-sp-315017-1790359589781.mp4",
+        "/media/pet-clips/5.mp4"
+      ],
+      "scheduledAt": "06:00"
+    },
+    {
+      "id": "sp-060835",
+      "platform": "tiktok",
+      "title": "Bí quyết giúp chó mèo lông mượt, khỏe mạnh chuẩn spa",
+      "content": "[00:00 - 00:03]\nCảnh quay: Cận cảnh chú mèo trông xơ xác đang gãi tai gãi người, chèn text đỏ nhấp nháy: \"SAO NUÔI MÃI KHÔNG ĐẸP?\".\nÂm thanh: Tiếng còi cảnh báo dồn dập, giật mình.\nVoiceover: Nuôi mãi mà boss vẫn gầy gò, lông xơ xác? Dừng lại ngay!\n\n[00:03 - 00:08]\nCảnh quay: Chuyển cảnh nhanh sang chú cún lông siêu mượt bóng bẩy đang cười, chủ nuôi cầm hộp Five Alben giơ lên.\nÂm thanh: Nhạc nền biến chuyển sang giai điệu vui nhộn, năng động.\nVoiceover: Muốn chó mèo đẹp, lông mượt, việc đầu tiên không phải đổi hạt đắt tiền, mà là TẨY GIUN!\n\n[00:08 - 00:15]\nCảnh quay: Cận cảnh viên thuốc Five Alben hương dâu. Bé pet hít hà và ăn một cách dễ dàng, không hề né tránh.\nÂm thanh: Hiệu ứng âm thanh tinh nghịch \"pop\".\nVoiceover: Với Five Alben chỉ 100k/hộp 3 vỉ, sạch bóng sán dây, giun đũa, giun phổi. Hương dâu cực thơm, boss ăn cực dễ!\n\n[00:15 - 00:22]\nCảnh quay: Bé pet khỏe mạnh, nhảy nhót tinh nghịch. Diễn viên chỉ tay vào icon giỏ hàng góc trái màn hình.\nÂm thanh: Nhạc kết tươi vui, hào hứng.\nVoiceover: Cam kết chính hãng 100% từ DVDmultilPET. Bấm ngay vào đường link trong phần mô tả để đặt mua Five Alben chính hãng tại DVDmultilPET nhé!",
+      "hookText": "Nuôi mãi mà boss vẫn gầy gò, lông xơ xác? Dừng lại ngay!",
+      "hashtags": [
+        "#taygiunchomeo",
+        "#fivealben",
+        "#chomeodep",
+        "#longmuortchomeo",
+        "#dvdmultipet",
+        "#thucungtot"
+      ],
+      "targetUrl": "https://thucungtot.net/products/thuoc-tay-giun-cho-cho-meo-five-alben-prod-395928",
+      "status": "draft",
+      "createdAt": "2026-09-20T18:31:00.835Z",
+      "mediaUrls": [
+        "/uploads/videos/video-sp-060835-1790359174130.mp4",
+        "/media/pet-clips/3.mp4"
+      ]
+    },
+    {
+      "id": "sp-744459",
+      "platform": "zalo",
+      "title": "Tin nhắn Zalo: Thông báo ưu đãi Thuốc Trị Ve, Bọ Chét, Bọ Mạt Five Butomec",
+      "content": "Dạ em chào anh/chị ạ! 🐾\n\nDVDmultilPET xin gửi tới anh/chị giải pháp chăm sóc bé yêu tốt nhất tuần này:\n⭐ Sản phẩm: Thuốc Trị Ve, Bọ Chét, Bọ Mạt Five Butomec\n💰 Giá ưu đãi hôm nay: 200.000₫\n🎁 Tặng kèm quà tặng thú cưng xinh xắn cho các đơn đặt sớm!\n\n👉 Anh/chị xem chi tiết và chọn phân loại tại link này nha:\nhttps://thucungtot.net/products/thuoc-tri-ve-bo-chet-bo-mat-five-butomec-prod-519397\n\nHoặc nhắn tin trực tiếp Zalo này (0819.210.319) để được đội ngũ thú y hỗ trợ giao hàng tận nơi nhanh nhất ạ!",
+      "hookText": "[ƯU ĐÃI ĐỘC QUYỀN] DVDmultilPET gửi tặng ba mẹ thú cưng deal hot hôm nay!",
+      "hashtags": [
+        "#dvdmultipet",
+        "#thucungtot"
+      ],
+      "targetUrl": "https://thucungtot.net/products/thuoc-tri-ve-bo-chet-bo-mat-five-butomec-prod-519397",
+      "status": "published",
+      "createdAt": "2026-09-20T17:52:24.459Z"
+    },
+    {
+      "id": "sp-01",
+      "platform": "tiktok",
+      "title": "Kịch bản TikTok: Sai lầm tai hại khi mèo uống ít nước",
+      "hookText": "Đừng để mèo cưng bị sỏi thận chỉ vì chiếc bát nước này!",
+      "content": "[00:00 - 00:03] Cảnh báo cận cảnh bé mèo đi vệ sinh khó khăn.\nVoice: \"Bạn có biết 80% mèo đối mặt nguy cơ sỏi tiết niệu chỉ vì không thích uống nước đọng trong bát?\"\n[00:04 - 00:15] Cảnh đặt Máy Lọc Nước Tuần Hoàn 2.5L hoạt động, dòng nước róc rách. Mèo tò mò chạy lại liếm nước liên tục.\nVoice: \"Tập tính mèo chỉ thích uống nước chảy động và giàu oxy tươi! Máy lọc nước DVDmultilPET khử ion khoáng, lọc sạch cặn lông 24/7.\"\n[00:16 - 00:25] Cảnh bé mèo khỏe mạnh, năng động.\nVoice: \"Bảo vệ thận cho 'hoàng thượng' ngay từ hôm nay. Link đặt máy chính hãng giảm giá bên dưới nhé!\"",
+      "hashtags": [
+        "#meocung",
+        "#chamsocmeo",
+        "#maylocnuocmeo",
+        "#dvdmultipet",
+        "#thucungtot",
+        "#learnontiktok"
+      ],
+      "targetUrl": "https://thucungtot.net/products",
+      "status": "draft",
+      "createdAt": "2026-09-15T14:43:19.019Z",
+      "mediaUrls": [
+        "/media/pet-clips/6.mp4"
+      ]
+    },
+    {
+      "id": "sp-02",
+      "platform": "facebook",
+      "title": "Bài đăng Facebook: Chế độ dinh dưỡng vàng cho cún con cai sữa",
+      "hookText": "Giai đoạn vàng 1-4 tháng tuổi: Quyết định 90% tầm vóc và đề kháng của cún cưng!",
+      "content": "🐾 GIAI ĐOẠN VÀNG 1 - 4 THÁNG TUỔI: BÍ QUYẾT ĐỂ BÉ CÚN LỚN NHANH, KHÔNG BỊ TIÊU CHẢY!\n\nRất nhiều ba mẹ nuôi cún con gặp tình trạng: Vừa chuyển từ bú mẹ sang ăn hạt là bé bị rối loạn tiêu hóa, phân lỏng hoặc còi cọc?\n\nLý do là hệ tiêu hóa của cún lúc này còn non nớt, lượng enzym tiêu hóa tinh bột còn rất thấp.\n\n👉 GIẢI PHÁP TỪ CHUYÊN GIA DINH DƯỠNG DVDmultilPET:\n1️⃣ Chọn dòng hạt chuyên biệt hạt xốp dễ ngâm mềm.\n2️⃣ Bổ sung men vi sinh FOS/MOS và Omega-3 phát triển não bộ.\n3️⃣ Chia nhỏ 4-5 bữa/ngày thay vì dồn bữa lớn.\n\nHạt Royal Canin & Taste of the Wild chính hãng hiện đang có sẵn tại shop với ưu đãi freeship toàn quốc!\n📞 Hotline tư vấn thú y: 0819.210.319\n🌐 Đặt hàng trực tuyến: https://thucungtot.net",
+      "hashtags": [
+        "#dinhduongchocon",
+        "#chamsocthucung",
+        "#dvdmultipet",
+        "#thucungtot",
+        "#thucanchomeo"
+      ],
+      "targetUrl": "https://thucungtot.net/products",
+      "status": "published",
+      "publishedUrl": "https://facebook.com/dvdmultipet",
+      "createdAt": "2026-09-15T14:43:19.021Z"
+    }
+  ]
+}

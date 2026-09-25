@@ -68,7 +68,7 @@ export default function CartPage() {
     const generatedId = `PN-${Date.now().toString().slice(-6)}`;
 
     // Lưu lại thông tin đơn hàng trước khi reset giỏ hàng
-    setConfirmedOrder({
+    const orderData = {
       id: generatedId,
       totalAmount: finalAmount,
       subtotal: totalPrice,
@@ -83,8 +83,21 @@ export default function CartPage() {
         price: i.product.price,
         quantity: i.quantity,
         weight: i.product.weight,
+        image: i.product.image,
       })),
-    });
+    };
+
+    setConfirmedOrder(orderData);
+
+    // Đồng bộ đơn hàng lên hệ thống lưu trữ Admin
+    fetch('/api/orders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ...orderData,
+        paymentMethod,
+      }),
+    }).catch((err) => console.warn('Error saving order to store:', err));
 
     setOrderId(generatedId);
     setOrderPlaced(true);

@@ -97,3 +97,50 @@ export interface CalorieCalculation {
   dailyWaterMl: number;
   bagDaysEstimate: number; // For a 1.5kg bag
 }
+
+export type OrderStatus =
+  | 'pending_payment'
+  | 'payment_received'
+  | 'shipping'
+  | 'completed'
+  | 'cancelled';
+
+export interface OrderItem {
+  id: string;
+  name: string;
+  price: number;
+  quantity: number;
+  weight?: string;
+  image?: string;
+}
+
+export interface Order {
+  id: string;
+  customerName: string;
+  phone: string;
+  address: string;
+  note?: string;
+  paymentMethod: 'vietqr' | 'cod';
+  items: OrderItem[];
+  subtotal: number;
+  shippingFee: number;
+  totalAmount: number;
+  status: OrderStatus;
+  createdAt: string;
+  updatedAt?: string;
+}
+
+export interface SocialPost {
+  id: string;
+  platform: 'facebook' | 'tiktok' | 'zalo' | 'instagram';
+  title: string;
+  content: string;
+  hookText?: string;
+  hashtags: string[];
+  mediaUrls?: string[];
+  targetUrl?: string;
+  publishedUrl?: string;
+  status: 'draft' | 'scheduled' | 'published';
+  scheduledAt?: string;
+  createdAt?: string;
+}
