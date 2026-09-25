@@ -9,7 +9,8 @@ export type ProductCategory =
   | 'hygiene_litter'       // Khay cát & Vệ sinh
   | 'toys_scratchers'      // Đồ chơi & Cào móng
   | 'grooming_health'      // Sữa tắm & Vệ sinh lông móng
-  | 'accessories_collars'; // Vòng cổ, Dây dắt, Ổ đệm
+  | 'accessories_collars'  // Vòng cổ, Dây dắt, Ổ đệm
+  | 'veterinary_medicine'; // Thuốc thú y, Dược phẩm trị liệu & Phòng ngừa
 
 // Giữ lại FoodCategory alias để tương thích ngược
 export type FoodCategory = ProductCategory;
@@ -30,6 +31,7 @@ export interface Product {
   rating: number;
   reviewCount: number;
   inStock: boolean;
+  stockQty?: number;
   featured?: boolean;
   image: string;
   shortDesc: string;
@@ -47,6 +49,24 @@ export interface Product {
     capacity?: string;
     origin?: string;
   };
+  veterinarySpecs?: {
+    activeIngredient?: string;      // Hoạt chất chính (ví dụ: Afoxolaner, Albendazole)
+    concentration?: string;         // Hàm lượng (ví dụ: 68mg, 28.3mg, 20ml)
+    dosageByWeight?: string;        // Liều dùng theo cân nặng kg
+    indication?: string;            // Chỉ định điều trị
+    contraindication?: string;      // Chống chỉ định / Thận trọng
+    routeOfAdministration?: string; // Đường dùng (Uống trực tiếp, nhỏ gáy, trộn thức ăn)
+    manufacturer?: string;          // Nhà sản xuất (ví dụ: FIVEVET)
+    registrationNumber?: string;    // Số đăng ký lưu hành
+    targetDisease?: string;         // Bệnh lý mục tiêu: 'antiparasitic' | 'dewormer' | 'skin_care' | 'general'
+  };
+  wholesalePricing?: {
+    retailPrice: number;            // Giá lẻ niêm yết
+    wholesalePrice: number;         // Giá sỉ / Bác sĩ thú y / Phòng khám
+    minWholesaleQty: number;        // Số lượng tối thiểu lấy giá sỉ
+  };
+  expiryDate?: string;              // Hạn dùng (YYYY-MM-DD)
+  batchNumber?: string;             // Số lô sản xuất
   benefits: string[];
   usageGuide?: string;
 }

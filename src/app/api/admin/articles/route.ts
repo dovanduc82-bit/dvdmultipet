@@ -1,4 +1,4 @@
-﻿import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { getStoredArticles, saveStoredArticle, deleteStoredArticle } from '@/lib/data/store';
 import { Article } from '@/lib/types';
 
@@ -61,6 +61,41 @@ export async function POST(req: NextRequest) {
   }
 }
 
+export async function PUT(req: NextRequest) {
+  try {
+    const body = await req.json();
+    const { id, title, summary, content, category, targetPet, featuredImage, relatedProductIds, tags } = body;
+
+    if (!id) {
+      return NextResponse.json({ success: false, error: 'Thiếu mã bài viết (id)' }, { status: 400 });
+    }
+
+    const currentArticles = getStoredArticles();
+    const existing = currentArticles.find((a) => a.id === id);
+    if (!existing) {
+      return NextResponse.json({ success: false, error: 'Không tìm thấy bài viết' }, { status: 404 });
+    }
+
+    const updatedArticle: Article = {
+      ...existing,
+      title: title ?? existing.title,
+      summary: summary ?? existing.summary,
+      content: content ?? existing.content,
+      category: category ?? existing.category,
+      targetPet: targetPet ?? existing.targetPet,
+      featuredImage: featuredImage ?? existing.featuredImage,
+      relatedProductIds: relatedProductIds ?? existing.relatedProductIds,
+      tags: tags ?? existing.tags
+    };
+
+    const saved = saveStoredArticle(updatedArticle);
+    return NextResponse.json({ success: true, article: saved });
+  } catch (error) {
+    console.error('Error updating article:', error);
+    return NextResponse.json({ success: false, error: 'Lỗi cập nhật bài viết' }, { status: 500 });
+  }
+}
+
 export async function DELETE(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
@@ -77,3 +112,4 @@ export async function DELETE(req: NextRequest) {
     return NextResponse.json({ success: false, error: 'Lỗi xóa bài viết' }, { status: 500 });
   }
 }
+

@@ -22,6 +22,8 @@ const CATEGORY_TABS = [
   { id: 'toys_scratchers', label: '🧶 Đồ chơi & Cào móng', group: 'accessory' },
   { id: 'grooming_health', label: '🧴 Sữa tắm & Da móng', group: 'accessory' },
   { id: 'accessories_collars', label: '🦮 Vòng cổ & Dây dắt', group: 'accessory' },
+  // Nhóm thuốc thú y & dược phẩm
+  { id: 'veterinary_medicine', label: '💊 Thuốc Thú Y & Trị Liệu', group: 'medicine' },
 ];
 
 function ProductCatalogContent() {
@@ -66,10 +68,14 @@ function ProductCatalogContent() {
         return false;
       }
 
-      // Section filter (food vs accessory)
+      // Section filter (food vs accessory vs medicine)
       const isFood = ['dry_kibble', 'wet_pate', 'dietary', 'treats'].includes(product.category);
+      const isMedicine = product.category === 'veterinary_medicine';
+      const isAccessory = !isFood && !isMedicine;
+
       if (sectionFilter === 'food' && !isFood) return false;
-      if (sectionFilter === 'accessory' && isFood) return false;
+      if (sectionFilter === 'accessory' && !isAccessory) return false;
+      if (sectionFilter === 'medicine' && !isMedicine) return false;
 
       // Category filter
       if (categoryFilter !== 'all' && product.category !== categoryFilter) {
@@ -83,7 +89,9 @@ function ProductCatalogContent() {
         const matchDesc = product.shortDesc.toLowerCase().includes(q);
         const matchIng = product.ingredients?.some((ing) => ing.toLowerCase().includes(q));
         const matchMat = product.specifications?.material?.toLowerCase().includes(q);
-        if (!matchName && !matchDesc && !matchIng && !matchMat) return false;
+        const matchAct = product.veterinarySpecs?.activeIngredient?.toLowerCase().includes(q);
+        const matchInd = product.veterinarySpecs?.indication?.toLowerCase().includes(q);
+        if (!matchName && !matchDesc && !matchIng && !matchMat && !matchAct && !matchInd) return false;
       }
       return true;
     }).sort((a, b) => {
@@ -92,7 +100,7 @@ function ProductCatalogContent() {
       if (sortBy === 'rating') return b.rating - a.rating;
       return 0;
     });
-  }, [petFilter, categoryFilter, sectionFilter, searchQuery, sortBy]);
+  }, [petFilter, categoryFilter, sectionFilter, searchQuery, sortBy, allProducts]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
@@ -100,53 +108,66 @@ function ProductCatalogContent() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
           <h1 className="text-3xl font-black text-slate-900 tracking-tight">
-            Cửa Hàng Dinh Dưỡng & Phụ Kiện Thiết Yếu Cho Thú Cưng
+            Cửa Hàng Dinh Dưỡng, Thuốc Thú Y & Phụ Kiện Cho Thú Cưng
           </h1>
           <p className="text-sm text-slate-500 mt-1">
-            Tuyển chọn thức ăn kiểm nghiệm y khoa và phụ kiện bát ăn, máy lọc nước, nhà cây, cát vệ sinh cao cấp.
+            Tuyển chọn thức ăn chuẩn y khoa, thuốc đặc trị Fivevet chính hãng và phụ kiện thiết yếu cao cấp.
           </p>
         </div>
 
-        {/* Big Section Tabs: Tất cả vs Thức Ăn vs Đồ Dùng */}
-        <div className="flex bg-slate-100 p-1.5 rounded-2xl shrink-0">
+        {/* Big Section Tabs: Tất cả vs Thức Ăn vs Đồ Dùng vs Thuốc Thú Y */}
+        <div className="flex flex-wrap bg-slate-100 p-1.5 rounded-2xl shrink-0 gap-1">
           <button
             onClick={() => {
               setSectionFilter('all');
               setCategoryFilter('all');
             }}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+            className={`px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all ${
               sectionFilter === 'all'
                 ? 'bg-white text-slate-900 shadow-sm'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
-            Tất Cả ({mockProducts.length})
+            Tất Cả ({allProducts.length})
           </button>
           <button
             onClick={() => {
               setSectionFilter('food');
               setCategoryFilter('all');
             }}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+            className={`px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all ${
               sectionFilter === 'food'
                 ? 'bg-orange-500 text-white shadow-sm'
                 : 'text-slate-600 hover:text-orange-600'
             }`}
           >
-            🍲 Thức Ăn (6)
+            🍲 Thức Ăn ({allProducts.filter(p => ['dry_kibble', 'wet_pate', 'dietary', 'treats'].includes(p.category)).length})
+          </button>
+          <button
+            onClick={() => {
+              setSectionFilter('medicine');
+              setCategoryFilter('all');
+            }}
+            className={`px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+              sectionFilter === 'medicine'
+                ? 'bg-rose-600 text-white shadow-sm'
+                : 'text-slate-600 hover:text-rose-600'
+            }`}
+          >
+            💊 Thuốc Thú Y ({allProducts.filter(p => p.category === 'veterinary_medicine').length})
           </button>
           <button
             onClick={() => {
               setSectionFilter('accessory');
               setCategoryFilter('all');
             }}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+            className={`px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all ${
               sectionFilter === 'accessory'
                 ? 'bg-teal-600 text-white shadow-sm'
                 : 'text-slate-600 hover:text-teal-700'
             }`}
           >
-            🎾 Phụ Kiện & Đồ Dùng (6)
+            🎾 Phụ Kiện ({allProducts.filter(p => !['dry_kibble', 'wet_pate', 'dietary', 'treats', 'veterinary_medicine'].includes(p.category)).length})
           </button>
         </div>
       </div>

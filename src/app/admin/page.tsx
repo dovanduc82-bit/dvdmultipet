@@ -52,7 +52,12 @@ import {
   Volume2,
   VolumeX,
   Mic,
-  Zap
+  Zap,
+  Pill,
+  Printer,
+  Stethoscope,
+  BadgeCheck,
+  BookOpen
 } from 'lucide-react';
 import { Product, Article, Order, OrderStatus, SocialPost } from '@/lib/types';
 
@@ -331,7 +336,7 @@ export default function AdminDashboardPage() {
   const [loginError, setLoginError] = useState('');
 
   // Main navigation tab
-  const [activeTab, setActiveTab] = useState<'overview' | 'products' | 'orders' | 'articles' | 'social'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'products' | 'medicines' | 'orders' | 'articles' | 'social'>('overview');
 
   // Data states
   const [products, setProducts] = useState<Product[]>([]);
@@ -340,6 +345,27 @@ export default function AdminDashboardPage() {
   const [socialPosts, setSocialPosts] = useState<SocialPost[]>([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
+  // Medicine Pharmacy Management States
+  const [medicineSearch, setMedicineSearch] = useState('');
+  const [medicineGroupFilter, setMedicineGroupFilter] = useState('all');
+  const [editingMedicineId, setEditingMedicineId] = useState<string | null>(null);
+  const [editingMedicineData, setEditingMedicineData] = useState<{
+    price: number;
+    wholesalePrice: number;
+    stockQty: number;
+    activeIngredient: string;
+    concentration: string;
+    dosageByWeight: string;
+  }>({
+    price: 0,
+    wholesalePrice: 0,
+    stockQty: 0,
+    activeIngredient: '',
+    concentration: '',
+    dosageByWeight: ''
+  });
+  const [savingMedId, setSavingMedId] = useState<string | null>(null);
 
   // Filters
   const [productSearch, setProductSearch] = useState('');
@@ -388,6 +414,8 @@ export default function AdminDashboardPage() {
     targetPet: 'all',
     featuredImage: ''
   });
+  const [readingArticle, setReadingArticle] = useState<Article | null>(null);
+  const [editingArticle, setEditingArticle] = useState<Article | null>(null);
 
   // AI Catalog & Price Quote Scanner State
   const [showScanModal, setShowScanModal] = useState(false);
@@ -564,6 +592,69 @@ export default function AdminDashboardPage() {
     }
   };
 
+  const handleStartEditMedicine = (med: Product) => {
+    setEditingMedicineId(med.id);
+    setEditingMedicineData({
+      price: med.price,
+      wholesalePrice: med.wholesalePricing?.wholesalePrice || Math.round(med.price * 0.75),
+      stockQty: med.stockQty || 50,
+      activeIngredient: med.veterinarySpecs?.activeIngredient || '',
+      concentration: med.veterinarySpecs?.concentration || '',
+      dosageByWeight: med.veterinarySpecs?.dosageByWeight || ''
+    });
+  };
+
+  const handleQuickSaveMedicine = async (medId: string) => {
+    setSavingMedId(medId);
+    try {
+      const original = products.find((p) => p.id === medId);
+      if (!original) return;
+      const res = await fetch('/api/admin/products', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: medId,
+          price: Number(editingMedicineData.price) || original.price,
+          stockQty: Number(editingMedicineData.stockQty) !== undefined ? Number(editingMedicineData.stockQty) : original.stockQty,
+          wholesalePricing: {
+            retailPrice: Number(editingMedicineData.price) || original.price,
+            wholesalePrice: Number(editingMedicineData.wholesalePrice) || original.wholesalePricing?.wholesalePrice || 70000,
+            minWholesaleQty: original.wholesalePricing?.minWholesaleQty || 10
+          },
+          veterinarySpecs: {
+            ...(original.veterinarySpecs || {}),
+            activeIngredient: editingMedicineData.activeIngredient || original.veterinarySpecs?.activeIngredient,
+            concentration: editingMedicineData.concentration || original.veterinarySpecs?.concentration,
+            dosageByWeight: editingMedicineData.dosageByWeight || original.veterinarySpecs?.dosageByWeight
+          }
+        })
+      });
+      const data = await res.json();
+      if (data.success) {
+        showNotification('Đã cập nhật báo giá & thông số thuốc thành công!');
+        setEditingMedicineId(null);
+        fetchData();
+      } else {
+        showNotification(data.error || 'Lỗi cập nhật báo giá', 'error');
+      }
+    } catch (e) {
+      showNotification('Lỗi kết nối khi cập nhật', 'error');
+    } finally {
+      setSavingMedId(null);
+    }
+  };
+
+  const handleCreateVideoForMedicine = (med: Product) => {
+    setSocialForm({
+      platform: 'tiktok',
+      productId: med.id,
+      topic: `Bí quyết trị dứt điểm và phòng ngừa bệnh cho thú cưng với ${med.name}`
+    });
+    setGeneratedPost(null);
+    setActiveTab('social');
+    setShowGenerateSocialModal(true);
+  };
+
   const handleToggleStock = async (product: Product) => {
     try {
       const res = await fetch('/api/admin/products', {
@@ -636,21 +727,46 @@ export default function AdminDashboardPage() {
     }
 
     try {
-      const res = await fetch('/api/admin/articles', {
-        method: 'POST',
+      const isEditing = Boolean(editingArticle);
+      const url = '/api/admin/articles';
+      const method = isEditing ? 'PUT' : 'POST';
+      const body = isEditing ? { id: editingArticle!.id, ...aForm } : aForm;
+
+      const res = await fetch(url, {
+        method,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(aForm)
+        body: JSON.stringify(body)
       });
       const data = await res.json();
       if (data.success) {
-        showNotification(`Đã đăng bài viết mới: ${aForm.title}`);
+        showNotification(
+          isEditing
+            ? `🎉 Đã cập nhật thành công bài viết: "${aForm.title}"!`
+            : `🎉 Đã xuất bản bài viết: "${aForm.title}" (${aForm.content.length.toLocaleString('vi-VN')} ký tự)!`
+        );
         setShowAddArticleModal(false);
+        setEditingArticle(null);
         setAForm({ title: '', summary: '', content: '', category: 'Chăm Sóc & Dinh Dưỡng', targetPet: 'all', featuredImage: '' });
         fetchData();
+      } else {
+        showNotification(data.error || 'Lỗi lưu bài viết', 'error');
       }
     } catch (err) {
-      showNotification('Lỗi đăng bài viết', 'error');
+      showNotification('Lỗi lưu bài viết', 'error');
     }
+  };
+
+  const handleStartEditArticle = (art: Article) => {
+    setEditingArticle(art);
+    setAForm({
+      title: art.title,
+      summary: art.summary,
+      content: art.content,
+      category: art.category,
+      targetPet: art.targetPet || 'all',
+      featuredImage: art.featuredImage || ''
+    });
+    setShowAddArticleModal(true);
   };
 
   const handleTriggerAiArticle = async () => {
@@ -1603,6 +1719,18 @@ export default function AdminDashboardPage() {
             </button>
 
             <button
+              onClick={() => setActiveTab('medicines')}
+              className={`px-3 py-2 rounded-xl flex items-center gap-2 transition-all whitespace-nowrap ${
+                activeTab === 'medicines'
+                  ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-sm'
+                  : 'text-slate-300 hover:text-white hover:bg-slate-700/60'
+              }`}
+            >
+              <Pill className="w-4 h-4 text-rose-300" />
+              <span>💊 Kho Thuốc & Báo Giá ({products.filter((p) => p.category === 'veterinary_medicine' || p.veterinarySpecs).length})</span>
+            </button>
+
+            <button
               onClick={() => setActiveTab('orders')}
               className={`px-3 py-2 rounded-xl flex items-center gap-2 transition-all whitespace-nowrap ${
                 activeTab === 'orders'
@@ -2026,6 +2154,448 @@ export default function AdminDashboardPage() {
           </div>
         )}
 
+        {/* TAB: QUẢN LÝ KHO DƯỢC PHẨM & BÁO GIÁ THUỐC THÚ Y */}
+        {activeTab === 'medicines' && (
+          <div className="space-y-6">
+            {/* Header & Quick Actions */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="p-2 rounded-xl bg-rose-100 text-rose-600 font-bold text-lg">💊</span>
+                  <div>
+                    <h2 className="text-xl font-black text-slate-900">
+                      Kho Thuốc & Bảng Báo Giá Dược Thú Y FIVEVET
+                    </h2>
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      Thống kê tồn kho, cập nhật báo giá bán lẻ / bán sỉ đại lý, cấu hình thông số dược lý và in ấn catalog.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2">
+                <Link
+                  href="/pharmacy"
+                  target="_blank"
+                  className="px-3.5 py-2 rounded-xl bg-white border border-rose-200 text-rose-700 hover:bg-rose-50 text-xs font-bold flex items-center gap-1.5 shadow-xs transition-colors"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>Xem Trang Web Dược Phẩm</span>
+                </Link>
+
+                <button
+                  type="button"
+                  onClick={() => window.print()}
+                  className="px-3.5 py-2 rounded-xl bg-slate-900 text-white hover:bg-slate-800 text-xs font-bold flex items-center gap-1.5 shadow-sm transition-colors cursor-pointer"
+                >
+                  <Printer className="w-3.5 h-3.5" />
+                  <span>🖨️ In Bảng Báo Giá & Catalog</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={fetchData}
+                  className="p-2 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-100 transition-colors"
+                  title="Làm mới dữ liệu kho thuốc"
+                >
+                  <RefreshCw className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* 4 Metric Cards */}
+            {(() => {
+              const medList = products.filter(
+                (p) => p.category === 'veterinary_medicine' || p.veterinarySpecs
+              );
+              const totalStock = medList.reduce((sum, p) => sum + (p.stockQty || 50), 0);
+              const totalValue = medList.reduce(
+                (sum, p) => sum + p.price * (p.stockQty || 50),
+                0
+              );
+
+              return (
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div className="bg-white p-5 rounded-2xl border border-rose-100 shadow-xs flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center shrink-0">
+                      <Pill className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-slate-500 font-medium">Mặt Hàng Dược Phẩm</p>
+                      <p className="text-2xl font-black text-slate-900">{medList.length} mã thuốc</p>
+                      <p className="text-[10px] text-rose-600 font-bold mt-0.5">100% Fivevet chính hãng</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-white p-5 rounded-2xl border border-rose-100 shadow-xs flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                      <Package className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-slate-500 font-medium">Tổng Tồn Kho Thuốc</p>
+                      <p className="text-2xl font-black text-slate-900">{totalStock} hộp/viên</p>
+                      <p className="text-[10px] text-emerald-600 font-bold mt-0.5">Đủ cung ứng đại lý & lẻ</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-white p-5 rounded-2xl border border-rose-100 shadow-xs flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                      <DollarSign className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-slate-500 font-medium">Tổng Giá Trị Kho Thuốc</p>
+                      <p className="text-2xl font-black text-slate-900">
+                        {totalValue.toLocaleString('vi-VN')}₫
+                      </p>
+                      <p className="text-[10px] text-slate-400 mt-0.5">Theo giá bán lẻ niêm yết</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-white p-5 rounded-2xl border border-rose-100 shadow-xs flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                      <ShieldCheck className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-slate-500 font-medium">Hạn Dùng & Lưu Hành</p>
+                      <p className="text-2xl font-black text-slate-900">Đến 2028</p>
+                      <p className="text-[10px] text-blue-600 font-bold mt-0.5">Đạt chuẩn GMP-WHO</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
+
+            {/* Filter and Search Toolbar */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setMedicineGroupFilter('all')}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                    medicineGroupFilter === 'all'
+                      ? 'bg-rose-600 text-white shadow-xs'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  Tất cả thuốc
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setMedicineGroupFilter('antiparasitic')}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                    medicineGroupFilter === 'antiparasitic'
+                      ? 'bg-rose-600 text-white shadow-xs'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  🪱 Trị Ve Rận (Five Axolaner)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setMedicineGroupFilter('dewormer')}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                    medicineGroupFilter === 'dewormer'
+                      ? 'bg-rose-600 text-white shadow-xs'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  💊 Tẩy Giun Sán (Five Alben)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setMedicineGroupFilter('skin_care')}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                    medicineGroupFilter === 'skin_care'
+                      ? 'bg-rose-600 text-white shadow-xs'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  🧴 Nấm Ghẻ & Mạt (Five Butomec)
+                </button>
+              </div>
+
+              <div className="relative min-w-[240px]">
+                <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                <input
+                  type="text"
+                  placeholder="Tìm kiếm thuốc, hoạt chất..."
+                  value={medicineSearch}
+                  onChange={(e) => setMedicineSearch(e.target.value)}
+                  className="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-rose-500 focus:bg-white transition-all"
+                />
+              </div>
+            </div>
+
+            {/* Medicine Price & Specs Management Table */}
+            <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs">
+                  <thead className="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                    <tr>
+                      <th className="p-3.5">Mã & Ảnh</th>
+                      <th className="p-3.5">Tên Thuốc & Quy Cách</th>
+                      <th className="p-3.5">Thông Số Dược Lý & Liều Dùng</th>
+                      <th className="p-3.5 text-right">Giá Bán Lẻ (VNĐ)</th>
+                      <th className="p-3.5 text-right">Giá Sỉ Đại Lý (VNĐ)</th>
+                      <th className="p-3.5 text-center">Tồn Kho</th>
+                      <th className="p-3.5 text-right">Thao Tác Quản Trị</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {products
+                      .filter((p) => p.category === 'veterinary_medicine' || p.veterinarySpecs)
+                      .filter((p) => {
+                        if (medicineGroupFilter !== 'all') {
+                          if (p.veterinarySpecs?.targetDisease !== medicineGroupFilter) return false;
+                        }
+                        if (medicineSearch.trim()) {
+                          const q = medicineSearch.toLowerCase();
+                          const matchName = p.name.toLowerCase().includes(q);
+                          const matchActive = p.veterinarySpecs?.activeIngredient?.toLowerCase().includes(q);
+                          const matchSku = p.sku.toLowerCase().includes(q);
+                          if (!matchName && !matchActive && !matchSku) return false;
+                        }
+                        return true;
+                      })
+                      .map((med) => {
+                        const isEditing = editingMedicineId === med.id;
+
+                        return (
+                          <tr key={med.id} className="hover:bg-slate-50/60 transition-colors">
+                            {/* SKU & Thumbnail */}
+                            <td className="p-3.5">
+                              <div className="flex items-center gap-2.5">
+                                <div className="w-12 h-12 rounded-xl bg-slate-100 overflow-hidden shrink-0 relative border border-slate-200">
+                                  <Image
+                                    src={med.image}
+                                    alt={med.name}
+                                    fill
+                                    className="object-cover"
+                                  />
+                                </div>
+                                <div>
+                                  <span className="font-mono font-bold text-slate-600 block">
+                                    {med.sku}
+                                  </span>
+                                  <span className="text-[10px] text-rose-600 font-bold">
+                                    FIVEVET
+                                  </span>
+                                </div>
+                              </div>
+                            </td>
+
+                            {/* Name & Package */}
+                            <td className="p-3.5 max-w-[220px]">
+                              <p className="font-bold text-slate-900 leading-snug">{med.name}</p>
+                              <div className="text-[11px] text-slate-400 mt-1 flex flex-wrap gap-1.5 items-center">
+                                <span className="bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded text-[10px]">
+                                  {med.weight}
+                                </span>
+                                <span>HSD: {med.expiryDate || '2028-12-31'}</span>
+                              </div>
+                            </td>
+
+                            {/* Pharmacology & Dosage */}
+                            <td className="p-3.5 max-w-[260px]">
+                              {isEditing ? (
+                                <div className="space-y-1.5 text-xs">
+                                  <input
+                                    type="text"
+                                    placeholder="Hoạt chất (vd: Afoxolaner)"
+                                    value={editingMedicineData.activeIngredient}
+                                    onChange={(e) =>
+                                      setEditingMedicineData({
+                                        ...editingMedicineData,
+                                        activeIngredient: e.target.value
+                                      })
+                                    }
+                                    className="w-full px-2 py-1 rounded border border-slate-300 text-xs bg-white"
+                                  />
+                                  <input
+                                    type="text"
+                                    placeholder="Hàm lượng (vd: 68mg / viên)"
+                                    value={editingMedicineData.concentration}
+                                    onChange={(e) =>
+                                      setEditingMedicineData({
+                                        ...editingMedicineData,
+                                        concentration: e.target.value
+                                      })
+                                    }
+                                    className="w-full px-2 py-1 rounded border border-slate-300 text-xs bg-white"
+                                  />
+                                  <input
+                                    type="text"
+                                    placeholder="Liều lượng (vd: 1 viên/10-25kg)"
+                                    value={editingMedicineData.dosageByWeight}
+                                    onChange={(e) =>
+                                      setEditingMedicineData({
+                                        ...editingMedicineData,
+                                        dosageByWeight: e.target.value
+                                      })
+                                    }
+                                    className="w-full px-2 py-1 rounded border border-slate-300 text-xs bg-white"
+                                  />
+                                </div>
+                              ) : (
+                                <div className="space-y-1 text-xs">
+                                  <div className="flex items-center gap-1.5">
+                                    <span className="font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded">
+                                      {med.veterinarySpecs?.activeIngredient || 'Dược chất'}
+                                    </span>
+                                    <span className="text-[11px] text-slate-600 font-semibold">
+                                      {med.veterinarySpecs?.concentration || ''}
+                                    </span>
+                                  </div>
+                                  <p className="text-[11px] text-slate-500 line-clamp-2">
+                                    <strong>Liều:</strong>{' '}
+                                    {med.veterinarySpecs?.dosageByWeight || med.usageGuide || 'Theo hướng dẫn'}
+                                  </p>
+                                </div>
+                              )}
+                            </td>
+
+                            {/* Retail Price */}
+                            <td className="p-3.5 text-right">
+                              {isEditing ? (
+                                <input
+                                  type="number"
+                                  value={editingMedicineData.price}
+                                  onChange={(e) =>
+                                    setEditingMedicineData({
+                                      ...editingMedicineData,
+                                      price: Number(e.target.value)
+                                    })
+                                  }
+                                  className="w-24 px-2 py-1 text-right font-black text-rose-600 border border-slate-300 rounded bg-white"
+                                />
+                              ) : (
+                                <span className="font-black text-rose-600 text-sm">
+                                  {med.price.toLocaleString('vi-VN')}₫
+                                </span>
+                              )}
+                            </td>
+
+                            {/* Wholesale Price */}
+                            <td className="p-3.5 text-right">
+                              {isEditing ? (
+                                <input
+                                  type="number"
+                                  value={editingMedicineData.wholesalePrice}
+                                  onChange={(e) =>
+                                    setEditingMedicineData({
+                                      ...editingMedicineData,
+                                      wholesalePrice: Number(e.target.value)
+                                    })
+                                  }
+                                  className="w-24 px-2 py-1 text-right font-bold text-emerald-700 border border-slate-300 rounded bg-white"
+                                />
+                              ) : (
+                                <div>
+                                  <span className="font-bold text-emerald-700">
+                                    {(
+                                      med.wholesalePricing?.wholesalePrice ||
+                                      Math.round(med.price * 0.75)
+                                    ).toLocaleString('vi-VN')}
+                                    ₫
+                                  </span>
+                                  <span className="block text-[9px] text-slate-400">
+                                    (Từ {med.wholesalePricing?.minWholesaleQty || 10} hộp)
+                                  </span>
+                                </div>
+                              )}
+                            </td>
+
+                            {/* Inventory Stock */}
+                            <td className="p-3.5 text-center">
+                              {isEditing ? (
+                                <input
+                                  type="number"
+                                  value={editingMedicineData.stockQty}
+                                  onChange={(e) =>
+                                    setEditingMedicineData({
+                                      ...editingMedicineData,
+                                      stockQty: Number(e.target.value)
+                                    })
+                                  }
+                                  className="w-16 px-1.5 py-1 text-center font-bold text-slate-800 border border-slate-300 rounded bg-white"
+                                />
+                              ) : (
+                                <span className="px-2.5 py-1 rounded-full font-bold text-[11px] bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                  {med.stockQty || 50}
+                                </span>
+                              )}
+                            </td>
+
+                            {/* Management Actions */}
+                            <td className="p-3.5 text-right">
+                              <div className="flex items-center justify-end gap-1.5">
+                                {isEditing ? (
+                                  <>
+                                    <button
+                                      type="button"
+                                      onClick={() => handleQuickSaveMedicine(med.id)}
+                                      disabled={savingMedId === med.id}
+                                      className="px-2.5 py-1 rounded-lg bg-emerald-600 text-white font-bold text-[11px] hover:bg-emerald-700 flex items-center gap-1 shadow-xs cursor-pointer"
+                                    >
+                                      {savingMedId === med.id ? (
+                                        <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                                      ) : (
+                                        <Check className="w-3.5 h-3.5" />
+                                      )}
+                                      Lưu
+                                    </button>
+                                    <button
+                                      type="button"
+                                      onClick={() => setEditingMedicineId(null)}
+                                      className="px-2 py-1 rounded-lg bg-slate-100 text-slate-600 font-bold text-[11px] hover:bg-slate-200 cursor-pointer"
+                                    >
+                                      Hủy
+                                    </button>
+                                  </>
+                                ) : (
+                                  <>
+                                    <button
+                                      type="button"
+                                      onClick={() => handleStartEditMedicine(med)}
+                                      className="px-2 py-1 rounded-lg bg-slate-100 hover:bg-rose-50 text-slate-700 hover:text-rose-600 font-bold text-[11px] flex items-center gap-1 transition-colors cursor-pointer"
+                                      title="Cập nhật báo giá & thông số"
+                                    >
+                                      <Edit3 className="w-3.5 h-3.5" />
+                                      <span>Sửa giá</span>
+                                    </button>
+
+                                    <button
+                                      type="button"
+                                      onClick={() => handleCreateVideoForMedicine(med)}
+                                      className="px-2 py-1 rounded-lg bg-pink-50 hover:bg-pink-600 text-pink-600 hover:text-white font-bold text-[11px] flex items-center gap-1 transition-colors cursor-pointer"
+                                      title="Tạo video TikTok / Facebook bằng AI"
+                                    >
+                                      <Video className="w-3.5 h-3.5" />
+                                      <span>Làm video</span>
+                                    </button>
+
+                                    <Link
+                                      href={`/products/${med.slug}`}
+                                      target="_blank"
+                                      className="p-1 rounded-lg text-slate-400 hover:text-orange-600 hover:bg-slate-100 transition-colors"
+                                      title="Xem trên website"
+                                    >
+                                      <ExternalLink className="w-3.5 h-3.5" />
+                                    </Link>
+                                  </>
+                                )}
+                              </div>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* TAB 3: QUẢN LÝ ĐƠN HÀNG */}
         {activeTab === 'orders' && (
           <div className="space-y-6">
@@ -2255,21 +2825,50 @@ export default function AdminDashboardPage() {
 
                     <h3 className="font-bold text-slate-900 text-sm line-clamp-2">{art.title}</h3>
                     <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">{art.summary}</p>
+
+                    {/* Character / Word count badge */}
+                    <div className="flex items-center gap-2 pt-1">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-[11px] font-bold bg-teal-50 text-teal-800 border border-teal-200">
+                        <FileText className="w-3.5 h-3.5 text-teal-600" />
+                        <span>Nội dung chi tiết: <strong>{art.content ? art.content.length.toLocaleString('vi-VN') : 0}</strong> ký tự</span>
+                      </span>
+                    </div>
                   </div>
 
-                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+                  <div className="pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between text-xs text-slate-400 gap-2">
                     <span>{new Date(art.publishedAt).toLocaleDateString('vi-VN')}</span>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5">
+                      <button
+                        type="button"
+                        onClick={() => setReadingArticle(art)}
+                        className="px-2.5 py-1 rounded-lg bg-teal-50 hover:bg-teal-100 text-teal-700 font-bold text-[11px] flex items-center gap-1 transition-colors"
+                        title="Đọc toàn văn nội dung chi tiết bài viết"
+                      >
+                        <BookOpen className="w-3.5 h-3.5" /> Đọc toàn văn
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => handleStartEditArticle(art)}
+                        className="px-2.5 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-700 font-bold text-[11px] flex items-center gap-1 transition-colors"
+                        title="Chỉnh sửa bài viết"
+                      >
+                        <Edit3 className="w-3.5 h-3.5" /> Sửa
+                      </button>
+
                       <Link
                         href={`/blog/${art.slug}`}
                         target="_blank"
-                        className="text-teal-600 hover:underline flex items-center gap-1 font-semibold"
+                        className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-[11px] flex items-center gap-1 transition-colors"
+                        title="Xem trang hiển thị cho bạn đọc"
                       >
-                        <Eye className="w-3.5 h-3.5" /> Xem bài
+                        <ExternalLink className="w-3.5 h-3.5 text-teal-600" /> Xem web
                       </Link>
+
                       <button
+                        type="button"
                         onClick={() => handleDeleteArticle(art.id, art.title)}
-                        className="text-slate-400 hover:text-rose-600 p-1"
+                        className="text-slate-400 hover:text-rose-600 p-1 transition-colors"
                         title="Xóa bài viết"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
@@ -2881,12 +3480,12 @@ export default function AdminDashboardPage() {
         </div>
       )}
 
-      {/* MODAL: SOẠN BÀI VIẾT MỚI */}
+      {/* MODAL: SOẠN & SỬA BÀI VIẾT CẨM NANG */}
       {showAddArticleModal && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl max-w-xl w-full p-6 space-y-4 shadow-2xl max-h-[90vh] overflow-y-auto">
             <h3 className="text-lg font-black text-slate-900 border-b border-slate-100 pb-3">
-              Soạn Bài Viết Cẩm Nang Mới
+              {editingArticle ? 'Chỉnh Sửa Bài Viết Cẩm Nang' : 'Soạn Bài Viết Cẩm Nang Mới'}
             </h3>
 
             <form onSubmit={handleSaveArticle} className="space-y-4 text-xs">
@@ -2943,21 +3542,31 @@ export default function AdminDashboardPage() {
               </div>
 
               <div>
-                <label className="block font-bold text-slate-700 mb-1">Nội dung chi tiết *</label>
+                <div className="flex items-center justify-between mb-1">
+                  <label className="font-bold text-slate-700">Nội dung chi tiết *</label>
+                  {aForm.content.length > 0 && (
+                    <span className="text-[11px] font-semibold text-teal-600 bg-teal-50 px-2 py-0.5 rounded-lg border border-teal-200">
+                      {aForm.content.length.toLocaleString('vi-VN')} ký tự
+                    </span>
+                  )}
+                </div>
                 <textarea
                   required
-                  rows={6}
+                  rows={8}
                   value={aForm.content}
                   onChange={(e) => setAForm({ ...aForm, content: e.target.value })}
                   placeholder="Viết nội dung bài viết ở đây, hướng dẫn bạn đọc chi tiết..."
-                  className="w-full px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-orange-500 font-sans leading-relaxed"
+                  className="w-full px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-500 font-sans leading-relaxed text-xs sm:text-sm"
                 />
               </div>
 
               <div className="flex justify-end gap-2 pt-4 border-t border-slate-100">
                 <button
                   type="button"
-                  onClick={() => setShowAddArticleModal(false)}
+                  onClick={() => {
+                    setShowAddArticleModal(false);
+                    setEditingArticle(null);
+                  }}
                   className="px-4 py-2.5 rounded-xl text-slate-600 hover:bg-slate-100 font-bold"
                 >
                   Hủy bỏ
@@ -2966,10 +3575,92 @@ export default function AdminDashboardPage() {
                   type="submit"
                   className="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold shadow-md shadow-teal-200"
                 >
-                  Đăng Bài Viết
+                  {editingArticle ? 'Lưu Thay Đổi Bài Viết' : 'Đăng Bài Viết'}
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL: ĐỌC TOÀN VĂN BÀI VIẾT CẨM NANG TRONG ADMIN */}
+      {readingArticle && (
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+          <div className="bg-white rounded-3xl max-w-3xl w-full p-6 space-y-4 shadow-2xl max-h-[90vh] flex flex-col border border-slate-200">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-teal-100 text-teal-800">
+                    {readingArticle.category}
+                  </span>
+                  <span className="text-[11px] font-bold text-slate-400">
+                    {new Date(readingArticle.publishedAt).toLocaleDateString('vi-VN')}
+                  </span>
+                </div>
+                <h3 className="text-base sm:text-lg font-black text-slate-900 leading-snug">
+                  {readingArticle.title}
+                </h3>
+              </div>
+              <button
+                onClick={() => setReadingArticle(null)}
+                className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center shrink-0"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {readingArticle.summary && (
+              <div className="p-3 bg-teal-50 rounded-2xl text-xs text-teal-900 italic border border-teal-200">
+                <strong>Tóm tắt:</strong> {readingArticle.summary}
+              </div>
+            )}
+
+            <div className="flex-1 overflow-y-auto space-y-3 pr-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
+              <div className="font-bold text-xs uppercase tracking-wider text-teal-800 flex items-center justify-between pb-1 border-b border-slate-100">
+                <span className="flex items-center gap-1.5">
+                  <FileText className="w-4 h-4 text-teal-600" /> Toàn văn nội dung chi tiết bài viết:
+                </span>
+                <span className="text-[11px] text-teal-700 bg-teal-50 px-2 py-0.5 rounded-full font-bold">
+                  {readingArticle.content ? readingArticle.content.length.toLocaleString('vi-VN') : 0} ký tự
+                </span>
+              </div>
+              <div className="whitespace-pre-line leading-relaxed text-slate-800 bg-slate-50 p-5 rounded-2xl border border-slate-200 font-sans">
+                {readingArticle.content}
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-between pt-3 border-t border-slate-100 text-xs gap-2">
+              <span className="text-slate-500">
+                Tác giả: <strong>{readingArticle.author?.name || 'DVDmultilPET'}</strong>
+              </span>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const toEdit = readingArticle;
+                    setReadingArticle(null);
+                    handleStartEditArticle(toEdit);
+                  }}
+                  className="px-3.5 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold flex items-center gap-1.5 shadow-sm transition-all"
+                >
+                  <Edit3 className="w-3.5 h-3.5" /> Chỉnh sửa bài này
+                </button>
+                <Link
+                  href={`/blog/${readingArticle.slug}`}
+                  target="_blank"
+                  className="px-3.5 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold flex items-center gap-1.5 shadow-sm transition-all"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" /> Xem trên Web
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => setReadingArticle(null)}
+                  className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition-all"
+                >
+                  Đóng
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}

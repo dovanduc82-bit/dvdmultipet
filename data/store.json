@@ -6,7 +6,7 @@
       "name": "Thuốc Trị Ve, Bọ Chét, Bọ Mạt Five Butomec",
       "slug": "thuoc-tri-ve-bo-chet-bo-mat-five-butomec-prod-519397",
       "petType": "all",
-      "category": "grooming_health",
+      "category": "veterinary_medicine",
       "lifeStage": "all",
       "price": 200000,
       "weight": "20ml",
@@ -19,7 +19,26 @@
         "Đảm bảo chính hãng 100%",
         "An toàn cho thú cưng",
         "Được kiểm định chất lượng"
-      ]
+      ],
+      "stockQty": 45,
+      "veterinarySpecs": {
+        "activeIngredient": "Ivermectin + Butox",
+        "concentration": "20mg/ml dung dịch",
+        "dosageByWeight": "Nhỏ 2-3 giọt/kg thể trọng dọc sống lưng",
+        "indication": "Đặc trị ve, bọ chét, mạt gà, ghẻ ngứa, rận ký sinh trên da lông.",
+        "contraindication": "Không nhỏ vào mắt, miệng. Không dùng cho giống chó Collie.",
+        "routeOfAdministration": "Nhỏ ngoài da (Spot-on)",
+        "manufacturer": "FIVEVET - Công ty CP Thuốc Thú Y Trung Ương 5",
+        "registrationNumber": "FW-5193/TY-CL",
+        "targetDisease": "skin_care"
+      },
+      "wholesalePricing": {
+        "retailPrice": 200000,
+        "wholesalePrice": 155000,
+        "minWholesaleQty": 5
+      },
+      "expiryDate": "2028-06-18",
+      "batchNumber": "BTM20-202606"
     },
     {
       "id": "prod-477745",
@@ -27,7 +46,7 @@
       "name": "Viên nhai diệt ve rận Five Axolaner 68mg (Cho chó từ 10-25kg)",
       "slug": "vien-nhai-diet-ve-ran-five-axolaner-68mg-cho-cho-tu-10-25kg-prod-477745",
       "petType": "dog",
-      "category": "grooming_health",
+      "category": "veterinary_medicine",
       "lifeStage": "all",
       "price": 100000,
       "weight": "1 viên",
@@ -40,7 +59,26 @@
         "Đảm bảo chính hãng 100%",
         "An toàn cho thú cưng",
         "Được kiểm định chất lượng"
-      ]
+      ],
+      "stockQty": 85,
+      "veterinarySpecs": {
+        "activeIngredient": "Afoxolaner",
+        "concentration": "68mg / viên",
+        "dosageByWeight": "1 viên duy nhất cho chó từ 10 - 25kg",
+        "indication": "Đặc trị và phòng ngừa ve, bọ chét, ghẻ Demodex, Sarcoptes.",
+        "contraindication": "Không dùng cho chó dưới 8 tuần tuổi hoặc dưới 2kg.",
+        "routeOfAdministration": "Đường uống trực tiếp",
+        "manufacturer": "FIVEVET - Công ty CP Thuốc Thú Y Trung Ương 5",
+        "registrationNumber": "FW-8291/TY-CL",
+        "targetDisease": "antiparasitic"
+      },
+      "wholesalePricing": {
+        "retailPrice": 100000,
+        "wholesalePrice": 75000,
+        "minWholesaleQty": 10
+      },
+      "expiryDate": "2028-10-15",
+      "batchNumber": "AXO68-202610"
     },
     {
       "id": "prod-477744",
@@ -48,7 +86,7 @@
       "name": "Viên nhai diệt ve rận Five Axolaner 28,3mg (Cho chó từ 4-10kg)",
       "slug": "vien-nhai-diet-ve-ran-five-axolaner-28-3mg-cho-cho-tu-4-10kg-prod-477744",
       "petType": "dog",
-      "category": "grooming_health",
+      "category": "veterinary_medicine",
       "lifeStage": "all",
       "price": 100000,
       "weight": "1 viên",
@@ -61,7 +99,26 @@
         "Đảm bảo chính hãng 100%",
         "An toàn cho thú cưng",
         "Được kiểm định chất lượng"
-      ]
+      ],
+      "stockQty": 120,
+      "veterinarySpecs": {
+        "activeIngredient": "Afoxolaner",
+        "concentration": "28.3mg / viên",
+        "dosageByWeight": "1 viên duy nhất cho chó từ 4 - 10kg",
+        "indication": "Trị và phòng ve rận, bọ chét, ghẻ ngứa Demodex, ghẻ tai.",
+        "contraindication": "Không dùng cho chó dưới 8 tuần tuổi hoặc dưới 2kg.",
+        "routeOfAdministration": "Đường uống trực tiếp",
+        "manufacturer": "FIVEVET - Công ty CP Thuốc Thú Y Trung Ương 5",
+        "registrationNumber": "FW-8290/TY-CL",
+        "targetDisease": "antiparasitic"
+      },
+      "wholesalePricing": {
+        "retailPrice": 100000,
+        "wholesalePrice": 75000,
+        "minWholesaleQty": 10
+      },
+      "expiryDate": "2028-09-20",
+      "batchNumber": "AXO28-202609"
     },
     {
       "id": "prod-477743",
@@ -69,7 +126,7 @@
       "name": "Viên nhai diệt ve rận Five Axolaner 11,3mg (Cho chó từ 2-4kg)",
       "slug": "vien-nhai-diet-ve-ran-five-axolaner-11-3mg-cho-cho-tu-2-4kg-prod-477743",
       "petType": "dog",
-      "category": "grooming_health",
+      "category": "veterinary_medicine",
       "lifeStage": "all",
       "price": 100000,
       "weight": "1 viên",
@@ -82,7 +139,26 @@
         "Đảm bảo chính hãng 100%",
         "An toàn cho thú cưng",
         "Được kiểm định chất lượng"
-      ]
+      ],
+      "stockQty": 95,
+      "veterinarySpecs": {
+        "activeIngredient": "Afoxolaner",
+        "concentration": "11.3mg / viên",
+        "dosageByWeight": "1 viên duy nhất cho cún từ 2 - 4kg",
+        "indication": "Diệt trừ ve, rận, bọ chét và ấu trùng bọ chét trên cún nhỏ.",
+        "contraindication": "Không dùng cho cún dưới 8 tuần tuổi hoặc dưới 1.8kg.",
+        "routeOfAdministration": "Đường uống trực tiếp",
+        "manufacturer": "FIVEVET - Công ty CP Thuốc Thú Y Trung Ương 5",
+        "registrationNumber": "FW-8289/TY-CL",
+        "targetDisease": "antiparasitic"
+      },
+      "wholesalePricing": {
+        "retailPrice": 100000,
+        "wholesalePrice": 75000,
+        "minWholesaleQty": 10
+      },
+      "expiryDate": "2028-11-01",
+      "batchNumber": "AXO11-202611"
     },
     {
       "id": "prod-395928",
@@ -90,7 +166,7 @@
       "name": "Thuốc tẩy giun cho chó mèo Five Alben",
       "slug": "thuoc-tay-giun-cho-cho-meo-five-alben-prod-395928",
       "petType": "all",
-      "category": "grooming_health",
+      "category": "veterinary_medicine",
       "lifeStage": "all",
       "price": 100000,
       "weight": "Hộp 3 vỉ x 10 viên",
@@ -103,7 +179,26 @@
         "Đảm bảo chính hãng 100%",
         "An toàn cho thú cưng",
         "Được kiểm định chất lượng"
-      ]
+      ],
+      "stockQty": 160,
+      "veterinarySpecs": {
+        "activeIngredient": "Albendazole",
+        "concentration": "100mg / viên",
+        "dosageByWeight": "1 viên cho 5-7kg thể trọng chó mèo",
+        "indication": "Tẩy sạch giun đũa, giun móc, sán dây, giun phổi.",
+        "contraindication": "Không dùng cho thú cưng đang mang thai giai đoạn đầu.",
+        "routeOfAdministration": "Đường uống trực tiếp",
+        "manufacturer": "FIVEVET - Công ty CP Thuốc Thú Y Trung Ương 5",
+        "registrationNumber": "FW-3959/TY-CL",
+        "targetDisease": "dewormer"
+      },
+      "wholesalePricing": {
+        "retailPrice": 100000,
+        "wholesalePrice": 70000,
+        "minWholesaleQty": 10
+      },
+      "expiryDate": "2028-12-30",
+      "batchNumber": "ALB30-202612"
     },
     {
       "id": "prod-01",
@@ -508,6 +603,30 @@
   ],
   "articles": [
     {
+      "id": "art-1790362473398",
+      "slug": "benh-coi-xuong-3398",
+      "title": "BỆNH CÒI XƯƠNG",
+      "summary": "Cơ chế sinh bệnh, Triệu chứng, phòng bệnh và điều trị",
+      "content": "Bệnh còi xương là một loại bệnh ở gia súc non trong thời kỳ phát triển, do rối loạn trao đổi canxi, photpho và vitamin D gây ra. Tổ chức xương phát triển kém và chó còi, dị dạng một số xương.\n\n\nNGUYÊN NHÂN\n\n- Do thức ăn (hoặc sữa mẹ) thiếu canxi, photpho, vitamin D, không được tắm nắng, tỷ lệ canxi và photpho không cân đối.\n\n- Bệnh tiêu chảy kéo dài, ngăn cản hấp thu khoáng.\n\n- Do chó bị thiểu năng tuyến phó giáp trạng gây mất cân bằng tỷ lệ Ca, P trong máu.\n\n\n\nCƠ CHẾ SINH BỆNH\n- Khi hàm lượng canxi trong cơ thể giảm, tỷ lệ Ca/P không cân đối ảnh hưởng đến sự tạo xương và sụn, nhất là sự hóa cốt ở các đầu xương, rõ nhất ở xương ống. Chó còi xương, xương ống thường cong queo, ảnh hưởng đến vận động, làm cho gia súc què hoặc liệt.\n- Ngoài ra, thiếu canxi còn gây co giật ở con vật, dễ mắc bệnh đường tiêu hóa, con vật gầy, chậm lớn, khả năng kháng bệnh kém.\nTRIỆU CHỨNG\n- Lúc đầu, con vật giảm ăn, tiêu hóa kém, thích nằm, có hiện tượng đau các khớp xương. liếm bậy bạ, mọc răng và thay răng chậm, nhiều trường hợp có hiện tượng co giật từng cơn.\n- Giai đoạn cuối, xương biến dạng dạng, các khớp sưng, các xương ống cong queo, sống lưng cong lên hay vặn vẹo, lồng ngực và xương chậu hẹp, ức lồi,... con vật gầy yếu dễ nhiễm bệnh.\nPHÒNG BỆNH\n- Không nuôi nhốt chó, nên tăng cường cho chó được vận động tắm nắng hàng ngày, cho ăn chế độ đày đủ các chất đặc biệt là bột xương, cá.\n- Định kỳ bổ sung thuốc Canxi cho chó tuần 1 viên\nĐIỀU TRỊ\n- Truyền tĩnh mạch Canxi clorua hoặc CALCIUM-F, CALMAPHOS, liều 5-10 ml/con/ngày liên tục 7-10 ngày.\n- Tăng cường vận động , tắm nắng, bổ sung thức ăn giàu canxi như bột xương, bột cá, sữa…\n- Kích thích ăn uống, nâng cao đề kháng: HAN-TOPHAN, MULTIVIT-forte, liều 1 ml/10 kg TT.\n- Định kỳ bổ sung thuốc Canxi cho chó tuần 2-3 viên",
+      "category": "Chăm Sóc & Dinh Dưỡng",
+      "targetPet": "all",
+      "featuredImage": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=800&auto=format&fit=crop&q=80",
+      "author": {
+        "name": "Đỗ Văn Đức - DVDmultilPET",
+        "title": "Chuyên gia Chăm sóc Thú cưng",
+        "avatar": "https://images.unsplash.com/photo-1594824813591-6893ddf4f2c0?w=150&auto=format&fit=crop&q=80"
+      },
+      "readTime": "5 phút đọc",
+      "publishedAt": "2026-09-25T18:54:33.398Z",
+      "status": "published",
+      "isAiGenerated": false,
+      "relatedProductIds": [],
+      "tags": [
+        "Chăm sóc thú cưng",
+        "DVDmultilPET"
+      ]
+    },
+    {
       "id": "art-01",
       "slug": "che-do-an-chuan-cho-meo-con-cai-sua-tu-1-den-4-thang",
       "title": "Cẩm Nang Dinh Dưỡng: Hướng Dẫn Cho Mèo Con Tập Ăn Dặm Từ 1 Đến 4 Tháng Tuổi",
@@ -602,6 +721,75 @@
     }
   ],
   "orders": [
+    {
+      "id": "PN-627553",
+      "customerName": "pkpp",
+      "phone": "21666",
+      "address": "số 23",
+      "note": "",
+      "paymentMethod": "vietqr",
+      "items": [
+        {
+          "id": "prod-02",
+          "name": "Hạt Trị Liệu Tiết Niệu Mèo Royal Canin Urinary S/O",
+          "price": 490000,
+          "quantity": 1,
+          "weight": "1.5kg",
+          "image": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      "subtotal": 490000,
+      "shippingFee": 30000,
+      "totalAmount": 520000,
+      "status": "pending_payment",
+      "createdAt": "2026-09-25T18:57:07.565Z"
+    },
+    {
+      "id": "PN-060744",
+      "customerName": "Đức",
+      "phone": "0917201112",
+      "address": "số 3, ngõ 76",
+      "note": "",
+      "paymentMethod": "vietqr",
+      "items": [
+        {
+          "id": "prod-01",
+          "name": "Hạt Royal Canin Mother & Babycat (Mèo Mẹ & Mèo Con 1-4 Tháng)",
+          "price": 385000,
+          "quantity": 2,
+          "weight": "2kg",
+          "image": "https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      "subtotal": 770000,
+      "shippingFee": 0,
+      "totalAmount": 770000,
+      "status": "completed",
+      "createdAt": "2026-09-25T18:31:00.755Z"
+    },
+    {
+      "id": "PN-782141",
+      "customerName": "đức",
+      "phone": "0917201112",
+      "address": "số 3 àop[pp[fv",
+      "note": "",
+      "paymentMethod": "vietqr",
+      "items": [
+        {
+          "id": "prod-395928",
+          "name": "Thuốc tẩy giun cho chó mèo Five Alben",
+          "price": 100000,
+          "quantity": 1,
+          "weight": "Hộp 3 vỉ x 10 viên",
+          "image": "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=600&auto=format&fit=crop&q=80"
+        }
+      ],
+      "subtotal": 100000,
+      "shippingFee": 30000,
+      "totalAmount": 130000,
+      "status": "cancelled",
+      "createdAt": "2026-09-25T18:26:22.164Z"
+    },
     {
       "id": "PN-882194",
       "customerName": "Nguyễn Thanh Hà",
@@ -735,12 +923,13 @@
         "#thucungtot"
       ],
       "targetUrl": "https://thucungtot.net/products/thuoc-tay-giun-cho-cho-meo-five-alben-prod-395928",
-      "status": "draft",
+      "status": "scheduled",
       "createdAt": "2026-09-20T18:31:00.835Z",
       "mediaUrls": [
         "/uploads/videos/video-sp-060835-1790359174130.mp4",
         "/media/pet-clips/3.mp4"
-      ]
+      ],
+      "scheduledAt": "12:00"
     },
     {
       "id": "sp-744459",

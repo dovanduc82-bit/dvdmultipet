@@ -78,6 +78,7 @@ export default function Footer() {
               <li><Link href="/products?pet=dog&category=dry_kibble" className="hover:text-orange-400 transition-colors">Hạt Grain-Free cá hồi cho chó Poodle</Link></li>
               <li><Link href="/products?pet=dog&category=wet_pate" className="hover:text-orange-400 transition-colors">Pate Ý Monge Fresh thịt tươi</Link></li>
               <li><Link href="/products?category=treats" className="hover:text-orange-400 transition-colors">Súp thưởng Ciao Churu bổ sung nước</Link></li>
+              <li><Link href="/pharmacy" className="hover:text-rose-400 font-bold text-rose-300 transition-colors flex items-center gap-1"><span>💊</span> Thuốc thú y & Dược phẩm trị liệu</Link></li>
             </ul>
           </div>
 

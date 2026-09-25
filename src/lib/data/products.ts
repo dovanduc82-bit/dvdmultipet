@@ -411,7 +411,7 @@ export const mockProducts: Product[] = [
     name: 'Viên nhai diệt ve rận Five Axolaner 68mg (Cho chó từ 10-25kg)',
     slug: 'vien-nhai-diet-ve-ran-five-axolaner-68mg-cho-cho-tu-10-25kg-prod-477745',
     petType: 'dog',
-    category: 'grooming_health',
+    category: 'veterinary_medicine',
     lifeStage: 'all',
     price: 100000,
     originalPrice: 120000,
@@ -419,6 +419,7 @@ export const mockProducts: Product[] = [
     rating: 5.0,
     reviewCount: 48,
     inStock: true,
+    stockQty: 85,
     featured: true,
     image: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&auto=format&fit=crop&q=80',
     shortDesc: 'Viên nhai vị thịt thơm ngon điều trị và phòng ngừa nhiễm ve, bọ chét, ghẻ Demodex, ghẻ Sarcoptes trong 24h, bảo vệ liên tục 30 ngày cho chó từ 10-25kg.',
@@ -428,6 +429,24 @@ export const mockProducts: Product[] = [
       'Viên nén hương thịt bò thơm ngon, chó tự ăn hào hứng như bánh thưởng',
       'Bảo vệ liên tục suốt 30 ngày, an toàn cho chó từ 8 tuần tuổi'
     ],
+    veterinarySpecs: {
+      activeIngredient: 'Afoxolaner',
+      concentration: '68mg / viên',
+      dosageByWeight: '1 viên duy nhất cho chó từ 10 - 25kg (2.5 - 6.8 mg/kg)',
+      indication: 'Đặc trị và phòng ngừa ve (Rhipicephalus sanguineus), bọ chét (Ctenocephalides canis), ghẻ Demodex, Sarcoptes.',
+      contraindication: 'Không dùng cho chó dưới 8 tuần tuổi hoặc chó dưới 2kg. Thận trọng với chó có tiền sử động kinh.',
+      routeOfAdministration: 'Đường uống (cho nhai trực tiếp hoặc trộn thức ăn)',
+      manufacturer: 'FIVEVET - Công ty CP Thuốc Thú Y Trung Ương 5',
+      registrationNumber: 'FW-8291/TY-CL',
+      targetDisease: 'antiparasitic'
+    },
+    wholesalePricing: {
+      retailPrice: 100000,
+      wholesalePrice: 75000,
+      minWholesaleQty: 10
+    },
+    expiryDate: '2028-10-15',
+    batchNumber: 'AXO68-202610',
     usageGuide: 'Cho chó nhai trực tiếp hoặc trộn vào thức ăn. Liều lượng 1 viên duy nhất cho chó từ 10 - 25kg.'
   },
   {
@@ -436,7 +455,7 @@ export const mockProducts: Product[] = [
     name: 'Viên nhai diệt ve rận Five Axolaner 28,3mg (Cho chó từ 4-10kg)',
     slug: 'vien-nhai-diet-ve-ran-five-axolaner-28-3mg-cho-cho-tu-4-10kg-prod-477744',
     petType: 'dog',
-    category: 'grooming_health',
+    category: 'veterinary_medicine',
     lifeStage: 'all',
     price: 100000,
     originalPrice: 120000,
@@ -444,6 +463,7 @@ export const mockProducts: Product[] = [
     rating: 5.0,
     reviewCount: 36,
     inStock: true,
+    stockQty: 120,
     featured: true,
     image: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600&auto=format&fit=crop&q=80',
     shortDesc: 'Viên nhai vị thịt diệt ve rận, bọ chét, ghẻ Demodex, ghẻ Sarcoptes chuyên biệt cho chó nhỏ từ 4-10kg.',
@@ -452,6 +472,24 @@ export const mockProducts: Product[] = [
       'Đặc trị ghẻ Demodex và Sarcoptes gây rụng lông, ngứa rát',
       'Dễ ăn, hấp thu nhanh, hiệu quả kéo dài 30 ngày'
     ],
+    veterinarySpecs: {
+      activeIngredient: 'Afoxolaner',
+      concentration: '28.3mg / viên',
+      dosageByWeight: '1 viên duy nhất cho chó từ 4 - 10kg (2.8 - 7.0 mg/kg)',
+      indication: 'Trị và phòng ve rận, bọ chét, ghẻ ngứa Demodex, ghẻ tai Otodectes cynotis.',
+      contraindication: 'Không dùng cho chó dưới 8 tuần tuổi hoặc dưới 2kg.',
+      routeOfAdministration: 'Đường uống (cho nhai trực tiếp hoặc trộn hạt/pate)',
+      manufacturer: 'FIVEVET - Công ty CP Thuốc Thú Y Trung Ương 5',
+      registrationNumber: 'FW-8290/TY-CL',
+      targetDisease: 'antiparasitic'
+    },
+    wholesalePricing: {
+      retailPrice: 100000,
+      wholesalePrice: 75000,
+      minWholesaleQty: 10
+    },
+    expiryDate: '2028-09-20',
+    batchNumber: 'AXO28-202609',
     usageGuide: 'Cho chó nhai trực tiếp hoặc trộn vào thức ăn. Liều lượng 1 viên cho chó từ 4 - 10kg.'
   },
   {
@@ -460,7 +498,7 @@ export const mockProducts: Product[] = [
     name: 'Viên nhai diệt ve rận Five Axolaner 11,3mg (Cho chó từ 2-4kg)',
     slug: 'vien-nhai-diet-ve-ran-five-axolaner-11-3mg-cho-cho-tu-2-4kg-prod-477743',
     petType: 'dog',
-    category: 'grooming_health',
+    category: 'veterinary_medicine',
     lifeStage: 'all',
     price: 100000,
     originalPrice: 120000,
@@ -468,6 +506,7 @@ export const mockProducts: Product[] = [
     rating: 5.0,
     reviewCount: 52,
     inStock: true,
+    stockQty: 95,
     featured: true,
     image: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=600&auto=format&fit=crop&q=80',
     shortDesc: 'Viên nhai vị thịt cho dòng chó mi ni, cún nhỏ từ 2-4kg giúp tiêu diệt tận gốc ve rận và bọ chét.',
@@ -476,6 +515,24 @@ export const mockProducts: Product[] = [
       'Loại bỏ sạch ve rận, bọ chét, chống tái nhiễm suốt 1 tháng',
       'An toàn tuyệt đối cho cún nhỏ từ 8 tuần tuổi'
     ],
+    veterinarySpecs: {
+      activeIngredient: 'Afoxolaner',
+      concentration: '11.3mg / viên',
+      dosageByWeight: '1 viên duy nhất cho cún từ 2 - 4kg (2.8 - 5.6 mg/kg)',
+      indication: 'Diệt trừ ve, rận, bọ chét và ấu trùng bọ chét trên cún nhỏ và các giống chó toy.',
+      contraindication: 'Không dùng cho cún dưới 8 tuần tuổi hoặc thể trọng dưới 1.8kg.',
+      routeOfAdministration: 'Đường uống trực tiếp',
+      manufacturer: 'FIVEVET - Công ty CP Thuốc Thú Y Trung Ương 5',
+      registrationNumber: 'FW-8289/TY-CL',
+      targetDisease: 'antiparasitic'
+    },
+    wholesalePricing: {
+      retailPrice: 100000,
+      wholesalePrice: 75000,
+      minWholesaleQty: 10
+    },
+    expiryDate: '2028-11-01',
+    batchNumber: 'AXO11-202611',
     usageGuide: 'Cho cún ăn trực tiếp hoặc tán nhỏ trộn cháo/pate. Liều 1 viên cho cún từ 2 - 4kg.'
   },
   {
@@ -484,7 +541,7 @@ export const mockProducts: Product[] = [
     name: 'Thuốc Trị Ve, Bọ Chét, Bọ Mạt Five Butomec',
     slug: 'thuoc-tri-ve-bo-chet-bo-mat-five-butomec-prod-519397',
     petType: 'all',
-    category: 'grooming_health',
+    category: 'veterinary_medicine',
     lifeStage: 'all',
     price: 200000,
     originalPrice: 240000,
@@ -492,6 +549,7 @@ export const mockProducts: Product[] = [
     rating: 4.9,
     reviewCount: 29,
     inStock: true,
+    stockQty: 45,
     featured: false,
     image: 'https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=600&auto=format&fit=crop&q=80',
     shortDesc: 'Dung dịch nhỏ gáy và phun xịt phòng ngừa, tiêu diệt ve, chấy rận, bọ chét, mạt cho chó, mèo, gà đá và chim cảnh.',
@@ -500,6 +558,24 @@ export const mockProducts: Product[] = [
       'Hiệu quả cao, an toàn cho cả chó mèo và gia cầm cảnh',
       'Dễ sử dụng, tác dụng kéo dài chống tái nhiễm'
     ],
+    veterinarySpecs: {
+      activeIngredient: 'Ivermectin + Butox',
+      concentration: '20mg/ml dung dịch',
+      dosageByWeight: 'Nhỏ 2-3 giọt/kg thể trọng dọc sống lưng, hoặc pha 1ml/1 lít nước phun xịt',
+      indication: 'Đặc trị ve, bọ chét, mạt gà, ghẻ ngứa, rận ký sinh trên da lông chó mèo và gia cầm cảnh.',
+      contraindication: 'Không nhỏ vào mắt, miệng thú cưng. Không dùng cho chó Collie hoặc dòng chó nhạy cảm Ivermectin.',
+      routeOfAdministration: 'Nhỏ ngoài da (Spot-on) hoặc phun xịt môi trường',
+      manufacturer: 'FIVEVET - Công ty CP Thuốc Thú Y Trung Ương 5',
+      registrationNumber: 'FW-5193/TY-CL',
+      targetDisease: 'skin_care'
+    },
+    wholesalePricing: {
+      retailPrice: 200000,
+      wholesalePrice: 155000,
+      minWholesaleQty: 5
+    },
+    expiryDate: '2028-06-18',
+    batchNumber: 'BTM20-202606',
     usageGuide: 'Nhỏ dọc sống lưng hoặc pha loãng phun xịt chuồng trại, khu vực nằm của thú cưng theo hướng dẫn.'
   },
   {
@@ -508,7 +584,7 @@ export const mockProducts: Product[] = [
     name: 'Thuốc tẩy giun cho chó mèo Five Alben',
     slug: 'thuoc-tay-giun-cho-cho-meo-five-alben-prod-395928',
     petType: 'all',
-    category: 'grooming_health',
+    category: 'veterinary_medicine',
     lifeStage: 'all',
     price: 100000,
     originalPrice: 130000,
@@ -516,6 +592,7 @@ export const mockProducts: Product[] = [
     rating: 5.0,
     reviewCount: 42,
     inStock: true,
+    stockQty: 160,
     featured: false,
     image: 'https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=600&auto=format&fit=crop&q=80',
     shortDesc: 'Tẩy sạch các loại sán lá, sán dây, giun đũa, giun phổi, giun móc ở chó mèo. Có hương dâu thơm ngậy dễ uống.',
@@ -524,6 +601,24 @@ export const mockProducts: Product[] = [
       'Hương dâu thơm tự nhiên, bé không bị nhả thuốc hay sùi bọt mép',
       'Quy cách hộp 3 vỉ 30 viên tiết kiệm, dùng được cho cả đàn thú cưng'
     ],
+    veterinarySpecs: {
+      activeIngredient: 'Albendazole',
+      concentration: '100mg / viên',
+      dosageByWeight: '1 viên cho 5-7kg thể trọng chó mèo',
+      indication: 'Tẩy sạch giun đũa (Toxocara), giun móc (Ancylostoma), sán dây (Dipylidium), giun phổi.',
+      contraindication: 'Không dùng cho thú cưng đang mang thai trong 1/3 thai kỳ đầu.',
+      routeOfAdministration: 'Đường uống trực tiếp hoặc nghiền trộn thức ăn',
+      manufacturer: 'FIVEVET - Công ty CP Thuốc Thú Y Trung Ương 5',
+      registrationNumber: 'FW-3959/TY-CL',
+      targetDisease: 'dewormer'
+    },
+    wholesalePricing: {
+      retailPrice: 100000,
+      wholesalePrice: 70000,
+      minWholesaleQty: 10
+    },
+    expiryDate: '2028-12-30',
+    batchNumber: 'ALB30-202612',
     usageGuide: 'Cho uống trực tiếp hoặc nghiền trộn vào thức ăn. Liều lượng theo bảng cân nặng in trên bao bì.'
   }
 ];

@@ -1,17 +1,29 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { mockArticles } from '@/lib/data/articles';
+import { Article } from '@/lib/types';
 import { Clock, BookOpen, Sparkles, ArrowRight, Search, RefreshCw, CheckCircle } from 'lucide-react';
 
 export default function BlogListPage() {
-  const [articles, setArticles] = useState(mockArticles);
+  const [articles, setArticles] = useState<Article[]>(mockArticles);
   const [search, setSearch] = useState('');
   const [selectedTag, setSelectedTag] = useState<string>('all');
   const [publishing, setPublishing] = useState(false);
   const [statusMsg, setStatusMsg] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch('/api/admin/articles')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && Array.isArray(data.articles) && data.articles.length > 0) {
+          setArticles(data.articles);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   const triggerAutoPublish = async () => {
     setPublishing(true);
@@ -21,7 +33,13 @@ export default function BlogListPage() {
       const data = await res.json();
       if (data.success) {
         setStatusMsg(data.message);
-        setArticles([...mockArticles]);
+        fetch('/api/admin/articles')
+          .then((r) => r.json())
+          .then((d) => {
+            if (d.success && Array.isArray(d.articles)) {
+              setArticles(d.articles);
+            }
+          });
       }
     } catch (e) {
       console.error(e);
@@ -31,17 +49,18 @@ export default function BlogListPage() {
   };
 
   const filteredArticles = articles.filter((art) => {
-    if (selectedTag !== 'all' && !art.tags.includes(selectedTag)) return false;
+    if (selectedTag !== 'all' && !(art.tags || []).includes(selectedTag)) return false;
     if (search.trim()) {
       const q = search.toLowerCase();
-      const matchTitle = art.title.toLowerCase().includes(q);
-      const matchSummary = art.summary.toLowerCase().includes(q);
+      const matchTitle = (art.title || '').toLowerCase().includes(q);
+      const matchSummary = (art.summary || '').toLowerCase().includes(q);
       if (!matchTitle && !matchSummary) return false;
     }
     return true;
   });
 
-  const allTags = ['all', 'Mèo con', 'Sỏi thận', 'Chó Poodle', 'Dị ứng da', 'Ăn dặm'];
+  const dynamicTags = Array.from(new Set(articles.flatMap((a) => a.tags || []))).slice(0, 8);
+  const allTags = ['all', ...dynamicTags];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
@@ -119,7 +138,7 @@ export default function BlogListPage() {
           >
             <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
               <Image
-                src={article.featuredImage}
+                src={article.featuredImage || 'https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=800&auto=format&fit=crop&q=80'}
                 alt={article.title}
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-300"
@@ -127,7 +146,7 @@ export default function BlogListPage() {
               />
               <div className="absolute top-3 left-3">
                 <span className="px-3 py-1 rounded-full text-[10px] font-bold bg-slate-900/80 backdrop-blur-md text-white">
-                  {article.category}
+                  {article.category || 'Cẩm Nang Y Khoa'}
                 </span>
               </div>
               {article.isAiGenerated && (
@@ -143,9 +162,9 @@ export default function BlogListPage() {
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-xs text-slate-400">
                   <Clock className="w-3.5 h-3.5" />
-                  <span>{article.readTime}</span>
+                  <span>{article.readTime || '5 phút đọc'}</span>
                   <span>•</span>
-                  <span>{new Date(article.publishedAt).toLocaleDateString('vi-VN')}</span>
+                  <span>{article.publishedAt ? new Date(article.publishedAt).toLocaleDateString('vi-VN') : 'Mới cập nhật'}</span>
                 </div>
 
                 <Link
@@ -162,7 +181,7 @@ export default function BlogListPage() {
 
               <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
                 <span className="text-slate-500 font-medium">
-                  Gắn kèm <strong className="text-orange-600">{article.relatedProductIds.length} sản phẩm</strong>
+                  Gắn kèm <strong className="text-orange-600">{(article.relatedProductIds || []).length} sản phẩm</strong>
                 </span>
                 <Link
                   href={`/blog/${article.slug}`}
