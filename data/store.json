@@ -620,7 +620,11 @@
       "publishedAt": "2026-09-25T18:54:33.398Z",
       "status": "published",
       "isAiGenerated": false,
-      "relatedProductIds": [],
+      "relatedProductIds": [
+        "prod-03",
+        "prod-477745",
+        "prod-395928"
+      ],
       "tags": [
         "Chăm sóc thú cưng",
         "DVDmultilPET"
