@@ -1436,17 +1436,23 @@ export default function AdminDashboardPage() {
   };
 
   const handlePublishTikTokWithVideo = async (post: SocialPost, mode: 'now' | 'schedule' = 'now') => {
-    const isRendered =
-      Boolean(post.mediaUrls?.[0]?.startsWith('/uploads/videos/')) ||
-      Boolean(post.mediaUrls?.[0]?.includes('co-chu'));
+    let postToUse = post;
+    if (!postToUse.mediaUrls || postToUse.mediaUrls.length === 0) {
+      const defaultClip = petClips[0]?.url || '/media/pet-clips/3.mp4';
+      postToUse = { ...postToUse, mediaUrls: [defaultClip] };
+    }
 
-    if (!isRendered && post.mediaUrls && post.mediaUrls.length > 0) {
-      showNotification('🎬 Đang tự động ghép chữ chạy & giọng AI vào video trước khi đẩy lên TikTok...');
-      await executeRenderVideo(post, true, mode);
+    const isRendered =
+      Boolean(postToUse.mediaUrls?.[0]?.startsWith('/uploads/videos/')) ||
+      Boolean(postToUse.mediaUrls?.[0]?.includes('co-chu'));
+
+    if (!isRendered) {
+      showNotification('🎬 Đang tự động ghép chữ chạy & giọng AI Bác Sĩ vào video để bạn đăng TikTok...');
+      await executeRenderVideo(postToUse, true, mode);
       return;
     }
 
-    triggerDownloadAndOpenTikTok(post, mode);
+    triggerDownloadAndOpenTikTok(postToUse, mode);
   };
 
   // Fetch local media clips from E:\Thú cưng
@@ -3233,20 +3239,14 @@ export default function AdminDashboardPage() {
                               type="button"
                               onClick={() => handlePublishTikTokWithVideo(post, 'now')}
                               className="w-full py-2.5 px-3 rounded-2xl font-black text-xs bg-gradient-to-r from-rose-600 via-pink-600 to-indigo-600 hover:from-rose-500 hover:to-indigo-500 text-white flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer"
-                              title="Tải video, chép kịch bản và mở TikTok Creator Center để đăng ngay lập tức"
+                              title="Tải video có chữ chạy, giọng AI và chép kịch bản để bạn đăng lên kênh TikTok của mình"
                             >
                               <Zap className="w-4 h-4 text-amber-300 fill-amber-300 animate-bounce" />
-                              <span>⚡ Đẩy Đăng Lên TikTok Ngay Lập Tức</span>
+                              <span>🎬 Xuất Video & Lấy Kịch Bản Đăng TikTok</span>
                             </button>
-                            <button
-                              type="button"
-                              onClick={() => handlePublishTikTokWithVideo(post, 'schedule')}
-                              className="w-full py-1.5 px-2.5 rounded-xl font-bold text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
-                              title={`Lên lịch đăng tự động vào lúc ${post.scheduledAt || '18:00'}`}
-                            >
-                              <Clock className="w-3.5 h-3.5 text-indigo-400" />
-                              <span>⏰ Hoặc Lên Lịch Đăng ({post.scheduledAt || '18:00'})</span>
-                            </button>
+                            <p className="text-[10px] text-slate-500 text-center font-medium px-1">
+                              💡 Tự động tạo sẵn video có giọng đọc AI Bác Sĩ & copy sẵn kịch bản để bạn đăng lên kênh TikTok
+                            </p>
                           </div>
                         )}
                       </div>
@@ -4866,13 +4866,13 @@ export default function AdminDashboardPage() {
 
             <div className="flex items-center gap-3.5 mb-5">
               <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-rose-600 via-pink-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-pink-500/25 shrink-0">
-                <Zap className="w-6 h-6 text-amber-300 fill-amber-300" />
+                <Film className="w-6 h-6 text-amber-300 fill-amber-300" />
               </div>
               <div>
                 <h3 className="text-base font-black text-white flex items-center gap-2">
-                  Đẩy Đăng Video Lên TikTok Ngay
+                  🎬 Video & Kịch Bản Đã Sẵn Sàng Đăng TikTok!
                 </h3>
-                <p className="text-xs text-rose-300 font-medium">Hoàn tất xuất bản trong 10 giây qua 3 bước đơn giản</p>
+                <p className="text-xs text-rose-300 font-medium">Hệ thống đã tạo sẵn video & kịch bản để bạn đăng lên kênh TikTok của mình</p>
               </div>
             </div>
 
@@ -4883,20 +4883,20 @@ export default function AdminDashboardPage() {
                   1
                 </div>
                 <div className="flex-1">
-                  <div className="font-bold text-slate-200 mb-1">Video MP4 đã tự động tải về máy</div>
-                  <p className="text-slate-400 text-[11px] mb-2">Tệp <code className="text-pink-300 font-semibold">tiktok-{tiktokPublishModalPost.id}.mp4</code> đã lưu vào thư mục Downloads của bạn.</p>
+                  <div className="font-bold text-slate-200 mb-1">Tệp video đã hoàn thành</div>
+                  <p className="text-slate-400 text-[11px] mb-2">Video có lồng tiếng AI Bác Sĩ & chữ chạy đã sẵn sàng. Nếu trình duyệt chưa tự tải, bạn bấm nút xanh bên dưới để tải về máy:</p>
                   <div className="flex items-center gap-2">
                     <a
                       href={tiktokPublishModalPost.mediaUrls?.[0] || '#'}
                       download={`tiktok-${tiktokPublishModalPost.id}.mp4`}
-                      className="inline-flex items-center gap-1 py-1 px-2.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-white text-[11px] font-bold transition-colors"
+                      className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-black transition-all shadow-sm"
                     >
-                      <Download className="w-3 h-3 text-emerald-400" /> Tải lại video
+                      <Download className="w-3.5 h-3.5 text-white" /> 📥 Bấm Tải Video Về Máy
                     </a>
                     <a
                       href={`/api/admin/tts?text=${encodeURIComponent(`${tiktokPublishModalPost.hookText || tiktokPublishModalPost.title}. ${tiktokPublishModalPost.title}. Bấm vào đường link trong phần mô tả để đặt mua chính hãng tại DVDmultilPET nha!`)}`}
                       download={`voice-ai-${tiktokPublishModalPost.id}.mp3`}
-                      className="inline-flex items-center gap-1 py-1 px-2.5 rounded-lg bg-pink-950/80 hover:bg-pink-900 text-pink-200 border border-pink-700/50 text-[11px] font-bold transition-colors"
+                      className="inline-flex items-center gap-1 py-1.5 px-2.5 rounded-xl bg-pink-950/80 hover:bg-pink-900 text-pink-200 border border-pink-700/50 text-[11px] font-bold transition-colors"
                     >
                       <Mic className="w-3 h-3 text-pink-400" /> Tải Giọng AI (.mp3)
                     </a>
@@ -4910,18 +4910,18 @@ export default function AdminDashboardPage() {
                   2
                 </div>
                 <div className="flex-1">
-                  <div className="font-bold text-slate-200 mb-1">Kịch bản & Hashtag đã chép vào Clipboard</div>
-                  <p className="text-slate-400 text-[11px] mb-2">Đầy đủ tiêu đề, câu Hook 3s thu hút và hashtag viral kèm link cửa hàng.</p>
+                  <div className="font-bold text-slate-200 mb-1">Lời chú thích & Link sản phẩm đã sao chép sẵn</div>
+                  <p className="text-slate-400 text-[11px] mb-2">Đầy đủ tiêu đề, câu Hook 3s thu hút, hashtag viral và link mua hàng tại thucungtot.net.</p>
                   <button
                     type="button"
                     onClick={() => {
                       const fullText = `${tiktokPublishModalPost.title}\n\n${tiktokPublishModalPost.hookText ? `"${tiktokPublishModalPost.hookText}"\n\n` : ''}🛒 Đặt mua chính hãng tại DVDmultilPET:\n${tiktokPublishModalPost.targetUrl || 'https://thucungtot.net/products'}\n\n${tiktokPublishModalPost.hashtags?.map((h) => `#${h.replace(/^#/, '')}`).join(' ') || ''}`;
                       navigator.clipboard.writeText(fullText.trim());
-                      showNotification('📋 Đã sao chép lại nội dung bài đăng!');
+                      showNotification('📋 Đã sao chép lại toàn bộ lời mô tả bài đăng!');
                     }}
-                    className="inline-flex items-center gap-1.5 py-1 px-2.5 rounded-lg bg-indigo-900/60 hover:bg-indigo-800 text-indigo-200 border border-indigo-700/70 text-[11px] font-bold cursor-pointer transition-colors"
+                    className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-xl bg-indigo-900/60 hover:bg-indigo-800 text-indigo-200 border border-indigo-700/70 text-[11px] font-bold cursor-pointer transition-colors"
                   >
-                    <Copy className="w-3 h-3 text-indigo-400" /> Bấm để sao chép lại
+                    <Copy className="w-3.5 h-3.5 text-indigo-400" /> 📋 Bấm để sao chép lại lời mô tả
                   </button>
                 </div>
               </div>
@@ -4932,12 +4932,11 @@ export default function AdminDashboardPage() {
                   3
                 </div>
                 <div className="flex-1">
-                  <div className="font-bold text-emerald-300 mb-1">Thao tác trên tab TikTok vừa mở:</div>
-                  <ol className="text-slate-300 text-[11px] space-y-1 list-decimal list-inside font-medium">
-                    <li>Kéo thả tệp video <code className="text-white bg-slate-900 px-1 py-0.5 rounded">.mp4</code> vào ô tải lên.</li>
-                    <li>Bấm phím <kbd className="bg-slate-950 px-1.5 py-0.5 rounded text-amber-300 font-mono font-bold">Ctrl + V</kbd> vào ô &ldquo;Chú thích&rdquo; (Caption).</li>
-                    <li>Nhấn nút đỏ <strong className="text-rose-400 font-bold">&ldquo;Đăng&rdquo; (Post)</strong> để xuất bản video ngay lập tức!</li>
-                  </ol>
+                  <div className="font-bold text-emerald-300 mb-1">Đăng lên kênh TikTok của bạn (Chọn 1 trong 2 cách):</div>
+                  <div className="space-y-1.5 text-slate-300 text-[11px]">
+                    <p>• <strong>Cách 1 (Trên máy tính):</strong> Bấm nút <span className="text-pink-300 font-bold">"Mở Trang Đăng TikTok"</span> bên dưới ➡️ Kéo tệp video vào ➡️ Bấm <kbd className="bg-slate-950 px-1 py-0.5 rounded text-amber-300 font-mono">Ctrl + V</kbd> dán chú thích ➡️ Bấm nút đỏ <strong>"Đăng"</strong>.</p>
+                    <p>• <strong>Cách 2 (Trên điện thoại):</strong> Bạn gửi video vừa tải sang điện thoại (qua Zalo) ➡️ Mở app TikTok bấm dấu <strong className="text-emerald-400 font-bold">(+)</strong> ➡️ Chọn video ➡️ Dán chú thích ➡️ Bấm <strong>Đăng</strong>!</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -4947,9 +4946,9 @@ export default function AdminDashboardPage() {
                 href="https://www.tiktok.com/creator-center/upload"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 py-2.5 px-3 rounded-xl font-black text-xs bg-gradient-to-r from-rose-600 via-pink-600 to-indigo-600 hover:from-rose-500 hover:to-indigo-500 text-white flex items-center justify-center gap-2 shadow-lg shadow-rose-900/30 transition-all"
+                className="flex-1 py-2.5 px-3 rounded-xl font-black text-xs bg-gradient-to-r from-rose-600 via-pink-600 to-indigo-600 hover:from-rose-500 hover:to-indigo-500 text-white flex items-center justify-center gap-2 shadow-lg shadow-rose-900/30 transition-all text-center"
               >
-                <ExternalLink className="w-3.5 h-3.5" /> Mở Trang Đăng TikTok
+                <ExternalLink className="w-3.5 h-3.5" /> Mở Trang Đăng TikTok (tiktok.com)
               </a>
               <button
                 type="button"
