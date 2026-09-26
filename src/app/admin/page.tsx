@@ -4894,7 +4894,7 @@ export default function AdminDashboardPage() {
                       <Download className="w-3 h-3 text-emerald-400" /> Tải lại video
                     </a>
                     <a
-                      href={`/api/admin/tts?text=${encodeURIComponent(`${tiktokPublishModalPost.hookText || tiktokPublishModalPost.title}. ${tiktokPublishModalPost.title}. Bấm vào giỏ hàng bên dưới để đặt mua chính hãng tại DVDmultilPET nha!`)}`}
+                      href={`/api/admin/tts?text=${encodeURIComponent(`${tiktokPublishModalPost.hookText || tiktokPublishModalPost.title}. ${tiktokPublishModalPost.title}. Bấm vào đường link trong phần mô tả để đặt mua chính hãng tại DVDmultilPET nha!`)}`}
                       download={`voice-ai-${tiktokPublishModalPost.id}.mp3`}
                       className="inline-flex items-center gap-1 py-1 px-2.5 rounded-lg bg-pink-950/80 hover:bg-pink-900 text-pink-200 border border-pink-700/50 text-[11px] font-bold transition-colors"
                     >
