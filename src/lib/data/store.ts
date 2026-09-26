@@ -240,6 +240,18 @@ async function deleteOrderFromSupabase(id: string) {
   } catch (err) {}
 }
 
+function parseValidDate(val?: string | null): string | null {
+  if (!val) return null;
+  if (/^\d{1,2}:\d{2}$/.test(val)) {
+    const today = new Date();
+    const [h, m] = val.split(':');
+    today.setHours(Number(h), Number(m), 0, 0);
+    return today.toISOString();
+  }
+  const d = new Date(val);
+  return isNaN(d.getTime()) ? null : d.toISOString();
+}
+
 async function syncSocialPostToSupabase(sp: SocialPost) {
   if (!isSupabaseConfigured || !supabase) return;
   try {
@@ -255,8 +267,8 @@ async function syncSocialPostToSupabase(sp: SocialPost) {
         target_url: sp.targetUrl || null,
         published_url: sp.publishedUrl || null,
         status: sp.status || 'draft',
-        scheduled_at: sp.scheduledAt || null,
-        created_at: sp.createdAt || new Date().toISOString()
+        scheduled_at: parseValidDate(sp.scheduledAt),
+        created_at: parseValidDate(sp.createdAt) || new Date().toISOString()
       }
     ]);
   } catch (err) {}
