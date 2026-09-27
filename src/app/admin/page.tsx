@@ -4416,6 +4416,11 @@ export default function AdminDashboardPage() {
               >
                 <Film className="w-3.5 h-3.5 text-rose-500" />
                 <span>1. Kho Cảnh Quay (E:\Thú cưng)</span>
+                {petClips.length > 0 && (
+                  <span className="text-[10px] bg-rose-100 text-rose-700 px-1.5 py-0.2 rounded-full font-bold">
+                    {petClips.length}
+                  </span>
+                )}
               </button>
 
               <button
