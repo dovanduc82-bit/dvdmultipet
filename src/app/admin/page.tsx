@@ -2817,23 +2817,38 @@ export default function AdminDashboardPage() {
                   key={art.id}
                   className="bg-white rounded-3xl border border-slate-200 p-5 shadow-sm space-y-3 flex flex-col justify-between"
                 >
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-teal-100 text-teal-800">
-                        {art.category}
-                      </span>
-                      {art.isAiGenerated && (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-orange-100 text-orange-800 flex items-center gap-1">
-                          <Sparkles className="w-3 h-3 text-orange-600" /> Do AI Tự Đăng
-                        </span>
+                  <div className="space-y-3">
+                    <div className="flex gap-3 items-start">
+                      {art.featuredImage && (
+                        <div className="w-24 h-20 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0 border border-slate-200">
+                          <img
+                            src={art.featuredImage}
+                            alt={art.title}
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              (e.target as HTMLElement).style.display = 'none';
+                            }}
+                          />
+                        </div>
                       )}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between gap-2 mb-1.5">
+                          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-teal-100 text-teal-800">
+                            {art.category}
+                          </span>
+                          {art.isAiGenerated && (
+                            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-orange-100 text-orange-800 flex items-center gap-1">
+                              <Sparkles className="w-3 h-3 text-orange-600" /> Do AI Tự Đăng
+                            </span>
+                          )}
+                        </div>
+                        <h3 className="font-bold text-slate-900 text-sm line-clamp-2">{art.title}</h3>
+                        <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed mt-1">{art.summary}</p>
+                      </div>
                     </div>
 
-                    <h3 className="font-bold text-slate-900 text-sm line-clamp-2">{art.title}</h3>
-                    <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">{art.summary}</p>
-
                     {/* Character / Word count badge */}
-                    <div className="flex items-center gap-2 pt-1">
+                    <div className="flex items-center gap-2 pt-0.5">
                       <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-[11px] font-bold bg-teal-50 text-teal-800 border border-teal-200">
                         <FileText className="w-3.5 h-3.5 text-teal-600" />
                         <span>Nội dung chi tiết: <strong>{art.content ? art.content.length.toLocaleString('vi-VN') : 0}</strong> ký tự</span>
@@ -3539,6 +3554,105 @@ export default function AdminDashboardPage() {
                   placeholder="Tóm tắt nội dung để hiện trên thẻ bài viết..."
                   className="w-full px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-orange-500"
                 />
+              </div>
+
+              <div>
+                <label className="block font-bold text-slate-700 mb-1">
+                  Hình ảnh bìa bài viết (Cover Image)
+                </label>
+                <div className="flex gap-2">
+                  <input
+                    type="url"
+                    value={aForm.featuredImage}
+                    onChange={(e) => setAForm({ ...aForm, featuredImage: e.target.value })}
+                    placeholder="Dán link ảnh (hoặc bấm chọn nhanh 1 ảnh mẫu thú y chuẩn bên dưới)..."
+                    className="flex-1 px-3 py-2 rounded-xl border border-slate-200 focus:outline-none focus:border-orange-500 text-xs"
+                  />
+                  {aForm.featuredImage && (
+                    <button
+                      type="button"
+                      onClick={() => setAForm({ ...aForm, featuredImage: '' })}
+                      className="px-2.5 py-2 text-xs text-rose-500 hover:bg-rose-50 rounded-xl border border-rose-200 font-bold"
+                    >
+                      Xóa
+                    </button>
+                  )}
+                </div>
+
+                {/* 1-Click Preset Gallery */}
+                <div className="mt-2">
+                  <p className="text-[11px] font-semibold text-slate-500 mb-1.5">
+                    💡 Bấm chọn nhanh ảnh chuẩn chuyên khoa thú y (1-Click):
+                  </p>
+                  <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                    {[
+                      {
+                        title: '🦴 Xương khớp',
+                        url: 'https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=1000&auto=format&fit=crop&q=80'
+                      },
+                      {
+                        title: '🩺 Khám thú y',
+                        url: 'https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=1000&auto=format&fit=crop&q=80'
+                      },
+                      {
+                        title: '🥣 Dinh dưỡng',
+                        url: 'https://images.unsplash.com/photo-1589924691995-400dc9ecc119?w=1000&auto=format&fit=crop&q=80'
+                      },
+                      {
+                        title: '🐶 Da lông Chó',
+                        url: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=1000&auto=format&fit=crop&q=80'
+                      },
+                      {
+                        title: '🐱 Mèo con',
+                        url: 'https://images.unsplash.com/photo-1574158622682-e40e69881006?w=1000&auto=format&fit=crop&q=80'
+                      },
+                      {
+                        title: '🏥 Trị liệu & Sỏi',
+                        url: 'https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=1000&auto=format&fit=crop&q=80'
+                      }
+                    ].map((preset) => (
+                      <button
+                        key={preset.url}
+                        type="button"
+                        onClick={() => setAForm({ ...aForm, featuredImage: preset.url })}
+                        className={`group relative rounded-xl overflow-hidden border-2 p-1 text-left transition-all ${
+                          aForm.featuredImage === preset.url
+                            ? 'border-orange-500 bg-orange-50 ring-2 ring-orange-200'
+                            : 'border-slate-200 hover:border-slate-300 bg-white'
+                        }`}
+                      >
+                        <div className="aspect-[4/3] rounded-lg overflow-hidden mb-1 bg-slate-100">
+                          <img
+                            src={preset.url}
+                            alt={preset.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+                          />
+                        </div>
+                        <p className="text-[10px] font-bold text-slate-700 truncate text-center">
+                          {preset.title}
+                        </p>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Live Preview if an image is entered */}
+                {aForm.featuredImage && (
+                  <div className="mt-2 p-2 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-3">
+                    <img
+                      src={aForm.featuredImage}
+                      alt="Xem trước ảnh bìa"
+                      className="w-20 h-14 rounded-lg object-cover border border-slate-200 flex-shrink-0"
+                      onError={(e) => {
+                        (e.target as HTMLElement).style.display = 'none';
+                      }}
+                    />
+                    <div className="text-[11px] text-slate-600 overflow-hidden">
+                      <p className="font-bold text-slate-800">✅ Đang sử dụng ảnh bìa này cho bài viết</p>
+                      <p className="truncate text-slate-400 font-mono text-[10px]">{aForm.featuredImage}</p>
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div>
