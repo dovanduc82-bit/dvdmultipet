@@ -4121,7 +4121,7 @@ export default function AdminDashboardPage() {
                   <h3 className="text-lg font-black text-slate-900 flex items-center gap-2">
                     <span>Bác Sĩ AI Soạn Kịch Bản Video & Bài Viết MXH</span>
                     <span className="text-[10px] bg-pink-100 text-pink-700 px-2 py-0.5 rounded-full font-bold uppercase">
-                      Gemini 2.5 Flash
+                      Gemini 3.5 Flash
                     </span>
                   </h3>
                   <p className="text-xs text-slate-500">
