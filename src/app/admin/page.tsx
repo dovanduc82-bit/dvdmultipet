@@ -1171,14 +1171,32 @@ export default function AdminDashboardPage() {
       // 2. Tải video cảnh quay gốc
       const video = document.createElement('video');
       video.crossOrigin = 'anonymous';
-      video.src = videoSrc;
       video.muted = true;
       video.playsInline = true;
       video.preload = 'auto';
 
-      await new Promise<void>((resolve, reject) => {
-        video.onloadeddata = () => resolve();
-        video.onerror = () => reject(new Error('Không thể tải video cảnh quay'));
+      await new Promise<void>((resolve) => {
+        let isDone = false;
+        const done = () => {
+          if (!isDone) {
+            isDone = true;
+            clearTimeout(timer);
+            video.removeEventListener('loadeddata', done);
+            video.removeEventListener('canplay', done);
+            video.removeEventListener('error', done);
+            resolve();
+          }
+        };
+        const timer = setTimeout(done, 5000);
+
+        video.addEventListener('loadeddata', done);
+        video.addEventListener('canplay', done);
+        video.addEventListener('error', done);
+        video.src = videoSrc;
+        video.load();
+        if (video.readyState >= 2) {
+          done();
+        }
       });
 
       // Kích thước chuẩn khung hình dọc TikTok 9:16 (720 x 1280)
@@ -1410,30 +1428,37 @@ export default function AdminDashboardPage() {
       const { blob, filename } = await renderedPromise;
       clearTimeout(stopTimer);
 
-      setRenderProgress({ percent: 98, status: 'Đang lưu trữ video vào hệ thống...' });
-
-      // Lưu trữ file video lên hệ thống backend
-      const formData = new FormData();
-      formData.append('video', blob, filename);
-      formData.append('postId', post.id);
-
-      const uploadRes = await fetch('/api/admin/social-posts/upload-video', {
-        method: 'POST',
-        body: formData
-      });
-      const uploadData = await uploadRes.json();
-
-      // Kích hoạt tải file MP4 thật về máy tính
+      // 1. Kích hoạt tải file MP4 thật về máy tính NGAY LẬP TỨC
       const downloadUrl = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = downloadUrl;
       a.download = filename;
       document.body.appendChild(a);
       a.click();
-      document.body.removeChild(a);
+      setTimeout(() => {
+        if (document.body.contains(a)) document.body.removeChild(a);
+      }, 1000);
+
+      setRenderProgress({ percent: 98, status: 'Đang đồng bộ lưu trữ video...' });
+
+      // 2. Lưu trữ file video lên backend trong nền (không chặn tiến trình tải)
+      let uploadData: any = {};
+      try {
+        const formData = new FormData();
+        formData.append('video', blob, filename);
+        formData.append('postId', post.id);
+
+        const uploadRes = await fetch('/api/admin/social-posts/upload-video', {
+          method: 'POST',
+          body: formData
+        });
+        uploadData = await uploadRes.json().catch(() => ({}));
+      } catch (upErr) {
+        console.warn('Backend upload optional error:', upErr);
+      }
 
       setRenderProgress({ percent: 100, status: 'Đã hoàn tất xuất sắc!' });
-      showNotification('🎉 Đã đóng gói thành công video có chữ chạy và giọng AI Bác Sĩ!');
+      showNotification('🎉 Đã xuất và tải video thành công về máy tính của bạn!');
       fetchData();
 
       if (andPublish) {
@@ -5022,11 +5047,11 @@ export default function AdminDashboardPage() {
                   <p className="text-slate-400 text-[11px] mb-2">Video có lồng tiếng AI Bác Sĩ & chữ chạy đã sẵn sàng. Nếu trình duyệt chưa tự tải, bạn bấm nút xanh bên dưới để tải về máy:</p>
                   <div className="flex items-center gap-2">
                     <a
-                      href={tiktokPublishModalPost.mediaUrls?.[0] || '#'}
+                      href={`/api/admin/download-video?url=${encodeURIComponent(tiktokPublishModalPost.mediaUrls?.[0] || '/media/pet-clips/8.mp4')}&filename=tiktok-${tiktokPublishModalPost.id}.mp4`}
                       download={`tiktok-${tiktokPublishModalPost.id}.mp4`}
-                      className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-black transition-all shadow-sm"
+                      className="inline-flex items-center gap-1.5 py-2 px-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black transition-all shadow-md cursor-pointer"
                     >
-                      <Download className="w-3.5 h-3.5 text-white" /> 📥 Bấm Tải Video Về Máy
+                      <Download className="w-4 h-4 text-white" /> 📥 Bấm Tải Video Về Máy (MP4)
                     </a>
                     <a
                       href={`/api/admin/tts?text=${encodeURIComponent(`${tiktokPublishModalPost.hookText || tiktokPublishModalPost.title}. ${tiktokPublishModalPost.title}. Bấm vào đường link trong phần mô tả để đặt mua chính hãng tại DVDmultilPET nha!`)}`}

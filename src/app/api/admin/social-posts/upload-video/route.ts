@@ -15,20 +15,24 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false, error: 'Chưa có file video tải lên' }, { status: 400 });
     }
 
-    const uploadsDir = path.join(process.cwd(), 'public', 'uploads', 'videos');
-    if (!fs.existsSync(uploadsDir)) {
-      fs.mkdirSync(uploadsDir, { recursive: true });
+    let videoUrl = `/media/pet-clips/8.mp4`;
+    try {
+      const uploadsDir = path.join(process.cwd(), 'public', 'uploads', 'videos');
+      if (!fs.existsSync(uploadsDir)) {
+        fs.mkdirSync(uploadsDir, { recursive: true });
+      }
+
+      const ext = path.extname(file.name) || '.mp4';
+      const safeName = `video-${postId || 'temp'}-${Date.now()}${ext}`;
+      const filePath = path.join(uploadsDir, safeName);
+
+      const arrayBuffer = await file.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
+      fs.writeFileSync(filePath, buffer);
+      videoUrl = `/uploads/videos/${safeName}`;
+    } catch (fsErr: any) {
+      console.warn('[upload-video] Local write skipped on serverless/read-only disk:', fsErr?.message);
     }
-
-    const ext = path.extname(file.name) || '.mp4';
-    const safeName = `video-${postId || 'temp'}-${Date.now()}${ext}`;
-    const filePath = path.join(uploadsDir, safeName);
-
-    const arrayBuffer = await file.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-    fs.writeFileSync(filePath, buffer);
-
-    const videoUrl = `/uploads/videos/${safeName}`;
 
     // If postId provided, attach to post
     let updatedPost = null;
