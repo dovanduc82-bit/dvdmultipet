@@ -1,13 +1,51 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getStoredArticles, saveStoredArticle, deleteStoredArticle } from '@/lib/data/store';
+import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 import { Article } from '@/lib/types';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
+    if (isSupabaseConfigured && supabase) {
+      try {
+        const { data, error } = await supabase
+          .from('articles')
+          .select('*')
+          .order('published_at', { ascending: false });
+
+        if (!error && Array.isArray(data) && data.length > 0) {
+          const articles: Article[] = data.map((r: any) => ({
+            id: r.id,
+            title: r.title,
+            slug: r.slug,
+            summary: r.summary,
+            content: r.content,
+            category: r.category || 'Chăm Sóc & Dinh Dưỡng',
+            targetPet: r.target_pet || 'all',
+            featuredImage: r.featured_image || 'https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=1000&auto=format&fit=crop&q=80',
+            author: {
+              name: 'Đỗ Văn Đức - DVDmultilPET',
+              title: 'Chuyên gia Chăm sóc Thú cưng',
+              avatar: 'https://images.unsplash.com/photo-1594824813591-6893ddf4f2c0?w=150&auto=format&fit=crop&q=80'
+            },
+            readTime: r.read_time || '5 phút đọc',
+            publishedAt: r.published_at || new Date().toISOString(),
+            status: 'published',
+            isAiGenerated: false,
+            relatedProductIds: [],
+            tags: ['Chăm sóc thú cưng', 'DVDmultilPET']
+          }));
+
+          return NextResponse.json({ success: true, articles, source: 'supabase' });
+        }
+      } catch (sbErr) {
+        console.warn('[Articles GET] Supabase error, falling back to local:', sbErr);
+      }
+    }
+
     const articles = getStoredArticles();
-    return NextResponse.json({ success: true, articles });
+    return NextResponse.json({ success: true, articles, source: 'local' });
   } catch (error) {
     console.error('Error fetching articles:', error);
     return NextResponse.json({ success: false, error: 'Failed to fetch articles' }, { status: 500 });

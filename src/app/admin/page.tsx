@@ -1001,10 +1001,26 @@ export default function AdminDashboardPage() {
         body: JSON.stringify(generatedPost)
       });
       const data = await res.json();
-      if (data.success) {
-        showNotification('Đã lưu bài đăng vào kho Supabase thành công!');
+      if (data.success && data.post) {
+        // 1. Cập nhật ngay vào State kho kịch bản trên giao diện (Optimistic UI)
+        setSocialPosts((prev) => [data.post, ...prev.filter((p) => p.id !== data.post.id)]);
+
+        // 2. Chuyển sang đúng tab filter để người dùng nhìn thấy ngay bài vừa tạo
+        if (data.post.platform && socialFilter !== 'all' && socialFilter !== data.post.platform) {
+          setSocialFilter(data.post.platform);
+        }
+
+        // 3. Đảm bảo Tab đang mở là tab kho kịch bản mạng xã hội
+        setActiveTab('social');
+
+        // 4. Đóng modal và reset bài vừa tạo
         setShowGenerateSocialModal(false);
         setGeneratedPost(null);
+
+        // 5. Hiển thị thông báo thành công
+        showNotification(`🎉 Đã lưu bài đăng "${data.post.title}" vào kho Supabase thành công!`);
+
+        // 6. Tải lại dữ liệu đồng bộ nền từ Supabase
         fetchData();
       } else {
         showNotification(data.error || 'Lỗi lưu bài đăng', 'error');

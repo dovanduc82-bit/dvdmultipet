@@ -240,7 +240,7 @@ async function deleteOrderFromSupabase(id: string) {
   } catch (err) {}
 }
 
-function parseValidDate(val?: string | null): string | null {
+export function parseValidDate(val?: string | null): string | null {
   if (!val) return null;
   if (/^\d{1,2}:\d{2}$/.test(val)) {
     const today = new Date();
@@ -252,10 +252,10 @@ function parseValidDate(val?: string | null): string | null {
   return isNaN(d.getTime()) ? null : d.toISOString();
 }
 
-async function syncSocialPostToSupabase(sp: SocialPost) {
+export async function syncSocialPostToSupabase(sp: SocialPost) {
   if (!isSupabaseConfigured || !supabase) return;
   try {
-    await supabase.from('social_posts').upsert([
+    const { error } = await supabase.from('social_posts').upsert([
       {
         id: sp.id,
         platform: sp.platform,
@@ -271,7 +271,12 @@ async function syncSocialPostToSupabase(sp: SocialPost) {
         created_at: parseValidDate(sp.createdAt) || new Date().toISOString()
       }
     ]);
-  } catch (err) {}
+    if (error) {
+      console.error('[Supabase Sync] Error upserting social post:', error.message);
+    }
+  } catch (err: any) {
+    console.error('[Supabase Sync] Exception upserting social post:', err?.message || err);
+  }
 }
 
 async function deleteSocialPostFromSupabase(id: string) {
